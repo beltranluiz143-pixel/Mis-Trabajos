@@ -1,0 +1,29 @@
+using UnityEngine;
+public class MenuPause : MonoBehaviour
+{
+//Este Script se compilara con GameObject que se añadira a cada escena junto con el GameManager
+ //Este Script se relacionaría de manera directa con la Escena de inicio, y se añadira al jugador 
+ [SerializeField] private GameObject Pause;
+ [SerializeField] private GameObject MenuPause;
+ private bool GamePaused= false; 
+ void Update(){
+  if(Input.GetKeyDown(KeyDown.Escape))
+  if(GamePaused){
+  Continue;
+ }
+else(){
+ Pause;
+ }
+ public void Pause(){
+ GamePaused= true;
+ Time.timeScale=0f;    //Esto pausa el juego. Si añadimos un botón en el Jugador, y le añadimos esa función, el juego se pausa 
+ Pause.SetActive(true);
+ MenuPause.SetActive(false);
+}
+ public void Continue(){
+ GamePaused=false
+ Time.timeSacle= 1f;
+ Pause.SetActive(false);
+ MenuPause.SetActive(true);
+}
+}
