@@ -1,0 +1,92 @@
+using UnityEngine;
+public class MOVEMENT : MonoBehaviour
+{
+//Este script posee dependencias de scripts que no esatn enlazados, es una version beta del script que se encuentra en mi Repostiroio "Infraestrcutra 2D"
+    [Header("Speed")]
+    public float Speed = 4f;
+    public bool canMove = true;
+    [Header("Jump")]
+    public float jumpForce = 8f;
+    public float lowJumpMultiplier = 2f;
+    public float fallMultiplier = 2.5f;
+    [Header("Timers")]
+    [SerializeField] private float coyoteTime = 0.15f;
+    private float coyoteCounter;
+    [SerializeField] private float jumpBufferTime = 0.2f;
+    private float jumpBufferCounter;
+    [Header("Ground Check")]
+    public Transform groundCheck;
+    public float groundRadius = 0.1f;
+    public LayerMask groundLayer;
+    private bool isGrounded;
+    public bool IsGrounded => isGrounded;
+    private Rigidbody2D rb2D;
+    private Animator animator;
+    // Knockback
+    private bool isKnocked;
+    private float knockbackTimer;
+    //Scripts
+    private ABILITIES abilities;
+
+    void Start()
+    {
+        rb2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        abilities = GetComponent<ABILITIES>();
+    }
+    void Update()
+    {
+        // Knockback timer
+        if (isKnocked)
+        {
+            knockbackTimer -= Time.deltaTime;
+            if (knockbackTimer <= 0)
+                isKnocked = false;
+        }
+        animator.SetFloat("Verticalvelocity", rb2D.linearVelocityY);
+        animator.SetBool("IsGrounded", isGrounded);
+        jumpBufferCounter -= Time.deltaTime;
+        if (isGrounded)
+            coyoteCounter = coyoteTime;
+        else
+            coyoteCounter -= Time.deltaTime;
+
+        if (jumpBufferCounter > 0f && coyoteCounter > 0f)
+        {
+            rb2D.linearVelocity = new Vector2(rb2D.linearVelocityX, jumpForce);
+            jumpBufferCounter = 0f;
+            coyoteCounter = 0f;
+        }
+        if (rb2D.linearVelocity.y < 0)
+            rb2D.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        else if (rb2D.linearVelocity.y > 0)
+            rb2D.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+    }
+    public void Move(float direction)
+    {
+        if (isKnocked || !canMove) return;
+        if (abilities != null && abilities.IsDashing()) return;
+        rb2D.linearVelocity = new Vector2(direction * Speed, rb2D.linearVelocity.y);
+        if (direction != 0)
+            transform.localScale = new Vector3(Mathf.Sign(direction), 1, 1);
+        // Animación
+        animator.SetFloat("Speed", Mathf.Abs(direction));
+    }
+    public void Jump()
+    {
+        jumpBufferCounter = jumpBufferTime;
+    }
+    public void ApplyKnockback(Vector2 direction, float force, float duration)
+    {
+        isKnocked = true;
+        knockbackTimer = duration;
+        rb2D.linearVelocity = Vector2.zero;
+        rb2D.AddForce(direction.normalized * force, ForceMode2D.Impulse);
+    }
+    void FixedUpdate()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+    }
+    public float JumpForce => jumpForce;
+    public Rigidbody2D Rigidbody => rb2D;
+}
