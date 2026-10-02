@@ -1,0 +1,11 @@
+using UnityEngine;
+// Este codigo es antiguo, de principios de 2026
+public class CAMERAFOLLOWER : MonoBehaviour
+{
+    public Transform target;
+    private void LateUpdate()
+    {
+        //Follow the Player
+        transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+    }
+}
