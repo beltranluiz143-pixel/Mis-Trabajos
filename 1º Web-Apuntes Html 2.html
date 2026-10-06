@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apuntes HTML 2</title>
+</head>
+<body>
+  
+
+
+
+
+
+
+
+ <h1>APUNTES HTML 2</h1>
+  <h2>TABLAS</h2>
+  <p>Para crear tablas usamos varias etiquetas: 
+    <ul>
+    <li>Para crear la propia tabla en si usamos Table</li>
+    <li>Para crear una fila usamos tr</li>
+    <li>Para crear encabezados en la tabla se usa th</li>
+    <li>Para crear el propio contenido de la propia tabla usamos  </li>
+    </ul>
+    Un buen ejemplo es el siguiente:
+    <br>
+    <br>
+  </p>
+
+<!--Tabla-->
+  <table border="5">
+  <tr>
+    <th>Pollo</th>
+    <th>Carne</th>
+    <th>Pechuga</th>
+  </tr>
+<tr>
+  <td>Que bueno esta</td>
+    <td>Igual, buenisimo</td>
+  <td>Lo mismo,buenisimo </td>
+</tr>
+  </table>
+  <br>
+
+  <img src="https://images7.memedroid.com/images/UPLOADED398/667f028171148.jpeg" alt="No disponible" srcset="" width="180">
+<p>Se q no lo parece pero esta imagen es clave</p>
+  <br>
+<br>
+<hr>
+<br>
+
+
+<H2>LISTAS DESPLEGABLES</H2>
+<p>Nos faltaba este apartado en la primera parte de Apuntes HTML, aqui se explica:</p>
+<p>Para realizar una lista desplegable, usamos las siguientes etiquetas:</p>
+  <li>Label para crear el campo</li>
+  <li>Select crea la lista</li>
+  <li>Option value ponemos las opciones (recordad que el nombre de la opcion debe de ir fuera de las etiquetas!)</li>
+    <br>
+    <br>
+<label>Ciudad:</label>
+ <select name="Nombre de Ciudad" id="">
+ <option value="Madrid">Madrid</option>
+ <option value="Madrid">Barcelona</option>
+ </select>
+
+<br>
+<br>
+<hr>
+<br>
+<br>
+
+
+<!--FORMULARIOS-->
+<H2>FORMULARIOS</H2>
+<p>Un formulario se crea con las siguientes etiqeutas:</p>
+<ul>
+<li><b>Form</b> para crear el propio formulario</li>
+<li><b>Action</b> para indica donde se realiza el envio de datos</li>
+<li><b>Method</b> indica el envio de datos</li>
+</ul>
+<p>Para entrar luego ya en lo que se encutra dentro del formulariose usaran las siguientes etiquetas</p>
+
+
+<ul><li><b>Label</b> introudce un campo</li>
+<li><b>Input type= "text" </b> para introducir el texto especifico</li>
+<li><b>PlaceHolder</b> muestra texto guia</li>
+</ul>
+<p>Aqui un ejemplos de formulario</p>
+<br>
+<br>
+
+<!--Formularios-->
+
+<form action="*">
+  <label for="Nombre" >Nombre:  </label>
+  <input type="Nombre" name= "Nombre"  placeholder="Escriba su nombre Aqui" >
+  <br>
+  <br>
+Contraseña: <input type="password" name= "Contraseña"  placeholder="Escriba su contraseña Aqui" >
+
+<br>
+<br>
+<p>Mas alla de este input basico poseemos diferentes tipos de opciones para crear formularios intewresantes, ¿porque no los revisamos? </p>
+<ul>
+<li>Input type= Check box sirve para crear casillas con varias opciones </li>
+<li>Input type= Radio sirve para crear botones de opciones</li>
+<li>Input type= Email sirve para añadir un cuadro para introducir emails</li>
+<li>Input type= Number/Date sirve para añadir un cuadro para introducir numeros o fechas respectivamente</li>
+<li>Input type= Submit sirve para enviar el formulario</li>
+</ul>
+<br>
+<p>¡Probemolos todos anda!</p>
+<br>
+
+<br><hr><br>
+
+<h2>PRUEBA DE FORMULARIO </h2>
+<P>Buenos dias, introduzca sus datos aqui por favor:</P>
+<form action="*">
+  <label for="Nombre" >Nombre:  </label>
+  <input type="Nombre" name= "Nombre"  placeholder="Escriba su nombre Aqui" >
+  <br>
+  <br>
+Contraseña: <input type="password" name= "Contraseña"  placeholder="Escriba su contraseña Aqui" >
+<br>
+<br>
+Email:<input type="email" name= "Nombre"  placeholder="Escriba su Email Aqui" >
+
+<br>
+<br>
+<p>Seleccione su genero:</p>
+<input type="radio" id="Hombre" name="genero" value="chico">
+<label for="chico">Hombre</label>
+<br>
+<input type="radio" id="Mujer" name="genero" value="chica">
+<label for="chica">Mujer</label>
+<br>
+<input type="radio" id="Mujer" name="genero" value="chica">
+<label for="chica">Therizinosaurus Rex</label>
+ <label for="Nombre" > </label>
+ <br>
+ <br>
+ <p>Muy bien, ahora por favor intorduzca los lenguajes de programaccion en los que usted se especialize</p>
+
+ <input type="checkbox" id="acepto" name="acepto">
+<label for="acepto">HTML</label>
+<br>
+
+ <input type="checkbox" id="acepto" name="acepto">
+<label for="acepto">CSS</label>
+<br>
+
+ <input type="checkbox" id="acepto" name="acepto">
+<label for="acepto">JAVA</label>
+<br>
+<br><br>
+<input type="submit" name="" id="">
+</form>
+
+
+
+</body>
+</html>
