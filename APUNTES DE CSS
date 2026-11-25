@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apuntes CSS - Beltrán</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    background-color: #0b0f0c;
+    color: #c8ffd4;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+  .portada {
+    padding: 40px 20px 20px 20px;
+    text-align: center;
+    border-bottom: 2px solid #1f9e4f;
+  }
+  .portada h1 {
+    color: #39ff6a;
+    font-size: 2.2em;
+    margin: 0 0 8px 0;
+    text-shadow: 0 0 8px #1f9e4f55;
+  }
+  .portada p {
+    color: #8fd9a8;
+    max-width: 700px;
+    margin: 10px auto;
+  }
+  .leyenda {
+    color: #ffb84d;
+    font-size: 0.85em;
+    margin-top: 14px;
+  }
+  .indice {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #0f1711;
+    border: 1px solid #1f9e4f;
+    border-radius: 8px;
+  }
+  .indice h2 {
+    color: #39ff6a;
+    margin-top: 0;
+  }
+  .arbol {
+    white-space: pre;
+    font-size: 0.92em;
+    overflow-x: auto;
+    color: #a6ffc0;
+  }
+  .arbol a {
+    color: #c8ffd4;
+    text-decoration: none;
+  }
+  .arbol a:hover {
+    color: #39ff6a;
+    text-decoration: underline;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px 20px 80px 20px;
+  }
+  h2.categoria {
+    color: #0b0f0c;
+    background-color: #1f9e4f;
+    padding: 10px 16px;
+    border-radius: 6px;
+    margin-top: 60px;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .badge-pendiente, .mini-badge {
+    background-color: #ffb84d;
+    color: #2b1a00;
+    font-size: 0.6em;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+  .mini-badge {
+    margin-left: 10px;
+  }
+  .etiqueta-bloque {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #1f9e4f55;
+  }
+  .etiqueta-bloque.pendiente {
+    border-left: 3px solid #ffb84d;
+    padding-left: 14px;
+  }
+  .etiqueta-nombre {
+    color: #39ff6a;
+    font-size: 1.4em;
+    margin: 0 0 10px 0;
+  }
+  .descripcion {
+    color: #dfffe6;
+    font-size: 1.02em;
+    margin: 0 0 14px 0;
+    max-width: 700px;
+  }
+  .codigo {
+    background-color: #06170c;
+    border: 1px solid #1f9e4f;
+    border-radius: 6px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    color: #a6ffc0;
+    font-size: 0.95em;
+  }
+  a { color: #39ff6a; }
+</style>
+</head>
+<body>
+ 
+<div class="portada">
+  <h1>APUNTES DE CSS</h1>
+  <p>Referencia completa de propiedades CSS: lo que ya se ha dado en clase (documentado en el proyecto) + todo lo que falta para tener el panorama completo de CSS moderno, según W3Schools y lo que se pide en DAM.</p>
+  <p class="leyenda">⚠ = propiedad marcada como "aún no dada en clase" en tu registro. La incluyo para que tengas la referencia completa, pero no la confundas con lo que ya te puede entrar en un examen.</p>
+</div>
+ 
+<div class="indice">
+<h2>Índice (estructura del documento)</h2>
+<pre class="arbol">APUNTES CSS - BELTRÁN
+|
+|-- Formas de aplicar CSS (3)
+|     |-- <a href="#formas-de-aplicar-css-css-en-linea-inline">CSS en línea (inline)</a>
+|     |-- <a href="#formas-de-aplicar-css-css-interno-<style>">CSS interno (&lt;style&gt;)</a>
+|      -- <a href="#formas-de-aplicar-css-css-externo-.css-+-link">CSS externo (.css + link)</a>
+|-- Selectores (11)
+|     |-- <a href="#selectores-selector-universal-*">Selector universal (*)</a>
+|     |-- <a href="#selectores-selector-de-tipo">Selector de tipo</a>
+|     |-- <a href="#selectores-selector-de-clase-.">Selector de clase (.)</a>
+|     |-- <a href="#selectores-selector-de-id-#">Selector de ID (#)</a>
+|     |-- <a href="#selectores-selector-descendiente-espacio">Selector descendiente (espacio)</a>
+|     |-- <a href="#selectores-selector-de-hijo-directo->">Selector de hijo directo (&gt;)</a>
+|     |-- <a href="#selectores-hermano-adyacente-+">Hermano adyacente (+)</a>
+|     |-- <a href="#selectores-hermano-general-~">Hermano general (~)</a>
+|     |-- <a href="#selectores-selector-de-atributo">Selector de atributo</a>
+|     |-- <a href="#selectores-pseudoclase">Pseudoclase</a>
+|      -- <a href="#selectores-pseudoelemento--">Pseudoelemento (::)</a>
+|-- Pseudoclases de enlace (LVHA) (4)
+|     |-- <a href="#pseudoclases-de-enlace-lvha-a-link">a:link</a>
+|     |-- <a href="#pseudoclases-de-enlace-lvha-a-visited">a:visited</a>
+|     |-- <a href="#pseudoclases-de-enlace-lvha-a-hover">a:hover</a>
+|      -- <a href="#pseudoclases-de-enlace-lvha-a-active">a:active</a>
+|-- Colores (6)
+|     |-- <a href="#colores-color-por-nombre">Color por nombre</a>
+|     |-- <a href="#colores-color-hexadecimal-#">Color hexadecimal (#)</a>
+|     |-- <a href="#colores-rgb-decimal">RGB decimal</a>
+|     |-- <a href="#colores-rgb-porcentual">RGB porcentual</a>
+|     |-- <a href="#colores-rgba">RGBA</a>
+|      -- <a href="#colores-hsl">HSL</a>
+|-- Unidades (4)
+|     |-- <a href="#unidades-px-pixeles">px (píxeles)</a>
+|     |-- <a href="#unidades-em">em</a>
+|     |-- <a href="#unidades-rem">rem</a>
+|      -- <a href="#unidades-%-porcentaje">% (porcentaje)</a>
+|-- Box Model y box-sizing (6)
+|     |-- <a href="#box-model-y-box-sizing-width-height">width / height</a>
+|     |-- <a href="#box-model-y-box-sizing-padding">padding</a>
+|     |-- <a href="#box-model-y-box-sizing-border">border</a>
+|     |-- <a href="#box-model-y-box-sizing-margin">margin</a>
+|     |-- <a href="#box-model-y-box-sizing-box-sizing--content-box">box-sizing: content-box</a>
+|      -- <a href="#box-model-y-box-sizing-box-sizing--border-box">box-sizing: border-box</a>
+|-- Visibility y display:none (4)
+|     |-- <a href="#visibility-y-display-none-visibility--visible">visibility: visible</a>
+|     |-- <a href="#visibility-y-display-none-visibility--hidden">visibility: hidden</a>
+|     |-- <a href="#visibility-y-display-none-visibility--collapse">visibility: collapse</a>
+|      -- <a href="#visibility-y-display-none-display--none">display: none</a>
+|-- Fondos (background) (5)
+|     |-- <a href="#fondos-background-background-color">background-color</a>
+|     |-- <a href="#fondos-background-background-image">background-image</a>
+|     |-- <a href="#fondos-background-background-repeat">background-repeat</a>
+|     |-- <a href="#fondos-background-background-position">background-position</a>
+|      -- <a href="#fondos-background-background-size--cover">background-size: cover</a>
+|-- Bordes (3)
+|     |-- <a href="#bordes-border-style">border-style</a>
+|     |-- <a href="#bordes-border-width">border-width</a>
+|      -- <a href="#bordes-border-radius">border-radius</a>
+|-- Posicionamiento (4)
+|     |-- <a href="#posicionamiento-position--static">position: static</a>
+|     |-- <a href="#posicionamiento-position--relative">position: relative</a>
+|     |-- <a href="#posicionamiento-position--absolute">position: absolute</a>
+|      -- <a href="#posicionamiento-float--left-right">float: left / right</a>
+|-- Display, Flexbox y Grid (17) ⚠ (aún no dado en clase)
+|     |-- <a href="#display-flexbox-y-grid-display--block">display: block</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-display--inline">display: inline</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-display--inline-block">display: inline-block</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-display--flex">display: flex</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-display--grid">display: grid</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-flex-direction">flex-direction</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-justify-content">justify-content</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-align-items">align-items</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-flex-wrap">flex-wrap</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-gap">gap</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-flex-shorthand-en-el-hijo">flex (shorthand en el hijo)</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-grid-template-columns">grid-template-columns</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-grid-template-rows">grid-template-rows</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-gap-en-grid">gap (en grid)</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-grid-column">grid-column</a> ⚠
+|     |-- <a href="#display-flexbox-y-grid-grid-row">grid-row</a> ⚠
+|      -- <a href="#display-flexbox-y-grid-flex-vs-grid-cuando-usar-cada-uno">Flex vs Grid (cuándo usar cada uno)</a> ⚠
+|-- Especificidad y cascada (6) ⚠ (aún no dado en clase)
+|     |-- <a href="#especificidad-y-cascada-especificidad">Especificidad</a> ⚠
+|     |-- <a href="#especificidad-y-cascada-!important">!important</a> ⚠
+|     |-- <a href="#especificidad-y-cascada-inherit">inherit</a> ⚠
+|     |-- <a href="#especificidad-y-cascada-initial">initial</a> ⚠
+|     |-- <a href="#especificidad-y-cascada-unset">unset</a> ⚠
+|      -- <a href="#especificidad-y-cascada-orden-de-la-cascada">Orden de la cascada</a> ⚠
+|-- Tipografía (9) ⚠ (aún no dado en clase)
+|     |-- <a href="#tipografia-font-family">font-family</a> ⚠
+|     |-- <a href="#tipografia-font-size">font-size</a> ⚠
+|     |-- <a href="#tipografia-font-weight">font-weight</a> ⚠
+|     |-- <a href="#tipografia-font-style">font-style</a> ⚠
+|     |-- <a href="#tipografia-line-height">line-height</a> ⚠
+|     |-- <a href="#tipografia-text-align">text-align</a> ⚠
+|     |-- <a href="#tipografia-text-transform">text-transform</a> ⚠
+|     |-- <a href="#tipografia-letter-spacing">letter-spacing</a> ⚠
+|      -- <a href="#tipografia-text-shadow">text-shadow</a> ⚠
+|-- Transformaciones y animaciones (4) ⚠ (aún no dado en clase)
+|     |-- <a href="#transformaciones-y-animaciones-transform">transform</a> ⚠
+|     |-- <a href="#transformaciones-y-animaciones-transition">transition</a> ⚠
+|     |-- <a href="#transformaciones-y-animaciones-animation">animation</a> ⚠
+|      -- <a href="#transformaciones-y-animaciones-@keyframes">@keyframes</a> ⚠
+|-- Sombras y efectos visuales (3) ⚠ (aún no dado en clase)
+|     |-- <a href="#sombras-y-efectos-visuales-box-shadow">box-shadow</a> ⚠
+|     |-- <a href="#sombras-y-efectos-visuales-opacity">opacity</a> ⚠
+|      -- <a href="#sombras-y-efectos-visuales-filter">filter</a> ⚠
+|-- Variables CSS (2) ⚠ (aún no dado en clase)
+|     |-- <a href="#variables-css--variable-custom-property">--variable (custom property)</a> ⚠
+|      -- <a href="#variables-css-var">var()</a> ⚠
+|-- Responsive / Media queries (2) ⚠ (aún no dado en clase)
+|     |-- <a href="#responsive-media-queries-@media">@media</a> ⚠
+|      -- <a href="#responsive-media-queries-breakpoints-max-width-min-width">Breakpoints (max-width / min-width)</a> ⚠
+|-- Selectores y pseudoclases avanzadas (8) ⚠ (aún no dado en clase)
+|     |-- <a href="#selectores-y-pseudoclases-avanzadas--first-child">:first-child</a> ⚠
+|     |-- <a href="#selectores-y-pseudoclases-avanzadas--last-child">:last-child</a> ⚠
+|     |-- <a href="#selectores-y-pseudoclases-avanzadas--nth-child">:nth-child()</a> ⚠
+|     |-- <a href="#selectores-y-pseudoclases-avanzadas--not">:not()</a> ⚠
+|     |-- <a href="#selectores-y-pseudoclases-avanzadas--focus">:focus</a> ⚠
+|     |-- <a href="#selectores-y-pseudoclases-avanzadas--checked">:checked</a> ⚠
+|     |-- <a href="#selectores-y-pseudoclases-avanzadas--disabled">:disabled</a> ⚠
+|      -- <a href="#selectores-y-pseudoclases-avanzadas--before--after">::before / ::after</a> ⚠
+|-- Overflow (2) ⚠ (aún no dado en clase)
+|     |-- <a href="#overflow-overflow">overflow</a> ⚠
+|      -- <a href="#overflow-overflow-x-overflow-y">overflow-x / overflow-y</a> ⚠
+|-- Otras propiedades útiles de layout (3) ⚠ (aún no dado en clase)
+|     |-- <a href="#otras-propiedades-utiles-de-layout-z-index">z-index</a> ⚠
+|     |-- <a href="#otras-propiedades-utiles-de-layout-cursor">cursor</a> ⚠
+|      -- <a href="#otras-propiedades-utiles-de-layout-object-fit">object-fit</a> ⚠
+</pre>
+</div>
+ 
+<main>
+<h2 class="categoria" id="formas-de-aplicar-css">Formas de aplicar CSS </h2>
+ 
+<div class="etiqueta-bloque " id="formas-de-aplicar-css-css-en-linea-inline">
+  <h3 class="etiqueta-nombre">CSS en línea (inline) </h3>
+  <p class="descripcion">Metes el estilo directo en el atributo style de la etiqueta HTML. Funciona, pero solo afecta a ESE elemento y mezclas contenido con diseño, así que en un proyecto real casi no se usa salvo para pruebas rapidísimas.</p>
+  <pre class="codigo"><code>&lt;p style=&quot;color: red; font-size: 20px;&quot;&gt;Texto en rojo&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="formas-de-aplicar-css-css-interno-<style>">
+  <h3 class="etiqueta-nombre">CSS interno (&lt;style&gt;) </h3>
+  <p class="descripcion">Escribes el CSS dentro de una etiqueta &lt;style&gt; en el &lt;head&gt; del propio HTML. Vale para una página suelta o para probar algo rápido, pero si tienes varias páginas (como tu proyecto BGCX con Inicio/Tabla/Formulario) tendrías que repetir el mismo bloque en cada una.</p>
+  <pre class="codigo"><code>&lt;head&gt;
+  &lt;style&gt;
+    body { background-color: black; }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="formas-de-aplicar-css-css-externo-.css-+-link">
+  <h3 class="etiqueta-nombre">CSS externo (.css + link) </h3>
+  <p class="descripcion">El estilo vive en un archivo .css aparte, y lo conectas al HTML con &lt;link&gt;. Es la forma correcta en un proyecto real: un solo archivo de estilos para todas las páginas, más fácil de mantener y de reutilizar (así tienes montado Estilos.css en BGCX).</p>
+  <pre class="codigo"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;Estilos.css&quot;&gt;</code></pre>
+</div>
+ 
+<h2 class="categoria" id="selectores">Selectores </h2>
+ 
+<div class="etiqueta-bloque " id="selectores-selector-universal-*">
+  <h3 class="etiqueta-nombre">Selector universal (*) </h3>
+  <p class="descripcion">Selecciona TODOS los elementos de la página de golpe. Se usa sobre todo para poner una base común al principio del archivo, antes de empezar a personalizar nada, para que todo arranque desde el mismo punto.</p>
+  <pre class="codigo"><code>* {
+  box-sizing: border-box;
+  margin: 0;
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="selectores-selector-de-tipo">
+  <h3 class="etiqueta-nombre">Selector de tipo </h3>
+  <p class="descripcion">Selecciona todas las etiquetas de ese tipo (todos los &lt;p&gt;, todos los &lt;h1&gt;...). Sirve para dar un estilo consistente a algo que se repite mucho en la página sin tener que ir etiqueta por etiqueta.</p>
+  <pre class="codigo"><code>p {
+  color: white;
+  font-size: 16px;
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="selectores-selector-de-clase-.">
+  <h3 class="etiqueta-nombre">Selector de clase (.) </h3>
+  <p class="descripcion">Selecciona cualquier elemento que tenga ese class=&quot;...&quot; en el HTML, sin importar qué etiqueta sea. Es el selector que más vas a usar en el día a día porque puedes reutilizar la misma clase en sitios distintos.</p>
+  <pre class="codigo"><code>.Titulos {
+  text-align: center;
+  color: #39ff6a;
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="selectores-selector-de-id-#">
+  <h3 class="etiqueta-nombre">Selector de ID (#) </h3>
+  <p class="descripcion">Selecciona un único elemento, el que tenga ese id=&quot;...&quot;. Un id no se debería repetir nunca en la misma página (si lo repites, el HTML deja de ser válido). Se usa para algo exclusivo, como el bloque principal.</p>
+  <pre class="codigo"><code>#Visibilidad {
+  visibility: hidden;
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="selectores-selector-descendiente-espacio">
+  <h3 class="etiqueta-nombre">Selector descendiente (espacio) </h3>
+  <p class="descripcion">Selecciona un elemento que está dentro de otro, a cualquier nivel de profundidad (no tiene que ser hijo directo). Útil para decir &quot;todos los &lt;a&gt; que estén dentro de este menú&quot;, sin tener que ponerle una clase a cada enlace.</p>
+  <pre class="codigo"><code>.Indice a {
+  color: lightgreen;
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="selectores-selector-de-hijo-directo->">
+  <h3 class="etiqueta-nombre">Selector de hijo directo (&gt;) </h3>
+  <p class="descripcion">Como el descendiente, pero solo selecciona el hijo DIRECTO, no los nietos. Es más preciso: evita que el estilo se cuele en elementos anidados más profundo de lo que querías.</p>
+  <pre class="codigo"><code>.Indice &gt; li {
+  list-style-type: none;
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="selectores-hermano-adyacente-+">
+  <h3 class="etiqueta-nombre">Hermano adyacente (+) </h3>
+  <p class="descripcion">Selecciona el elemento que viene justo después del primero, al mismo nivel. Sirve para dar estilo a algo según lo que tiene justo delante, por ejemplo el párrafo que va pegado a un título.</p>
+  <pre class="codigo"><code>h2 + p {
+  margin-top: 0;
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="selectores-hermano-general-~">
+  <h3 class="etiqueta-nombre">Hermano general (~) </h3>
+  <p class="descripcion">Como el adyacente, pero selecciona TODOS los que vengan después al mismo nivel, no solo el primero.</p>
+  <pre class="codigo"><code>h2 ~ p {
+  color: gray;
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="selectores-selector-de-atributo">
+  <h3 class="etiqueta-nombre">Selector de atributo </h3>
+  <p class="descripcion">Selecciona elementos según el valor de un atributo HTML (no de una clase ni un id). Sirve para aplicar estilos automáticos según datos que ya están en el propio HTML.</p>
+  <pre class="codigo"><code>a[href^=&quot;https&quot;] {
+  color: green;
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="selectores-pseudoclase">
+  <h3 class="etiqueta-nombre">Pseudoclase </h3>
+  <p class="descripcion">Selecciona un estado especial de un elemento (cuando el ratón está encima, cuando es el primero de una lista...) sin tener que usar JavaScript para marcarlo.</p>
+  <pre class="codigo"><code>li:first-child {
+  font-weight: bold;
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="selectores-pseudoelemento--">
+  <h3 class="etiqueta-nombre">Pseudoelemento (::) </h3>
+  <p class="descripcion">Selecciona una parte concreta DENTRO del contenido, no el elemento entero. Con dos puntos dobles (::) para diferenciarlo de las pseudoclases.</p>
+  <pre class="codigo"><code>p::first-letter {
+  font-size: 2em;
+  color: #39ff6a;
+}</code></pre>
+</div>
+ 
+<h2 class="categoria" id="pseudoclases-de-enlace-lvha">Pseudoclases de enlace (LVHA) </h2>
+ 
+<div class="etiqueta-bloque " id="pseudoclases-de-enlace-lvha-a-link">
+  <h3 class="etiqueta-nombre">a:link </h3>
+  <p class="descripcion">El estado del enlace ANTES de que el usuario lo visite nunca. Es el color &quot;por defecto&quot; que ve la primera vez.</p>
+  <pre class="codigo"><code>a:link { color: lightblue; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="pseudoclases-de-enlace-lvha-a-visited">
+  <h3 class="etiqueta-nombre">a:visited </h3>
+  <p class="descripcion">El estado del enlace DESPUÉS de que el usuario lo haya abierto (el navegador lo recuerda por el historial). Sirve para que sepa de un vistazo qué enlaces ya visitó.</p>
+  <pre class="codigo"><code>a:visited { color: purple; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="pseudoclases-de-enlace-lvha-a-hover">
+  <h3 class="etiqueta-nombre">a:hover </h3>
+  <p class="descripcion">Mientras el ratón está encima del enlace, sin hacer click todavía. Avisa al usuario de que eso es clicable.</p>
+  <pre class="codigo"><code>a:hover { color: orange; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="pseudoclases-de-enlace-lvha-a-active">
+  <h3 class="etiqueta-nombre">a:active </h3>
+  <p class="descripcion">El instante exacto en el que se hace click (mientras se mantiene pulsado). Da la sensación de que esto ha respondido.</p>
+  <pre class="codigo"><code>a:active { color: red; }
+ 
+/* Ojo: SIEMPRE en este orden (LoVe HAte),
+   porque tienen la misma especificidad y si
+   las desordenas, la de mas abajo tapa a las de arriba. */</code></pre>
+</div>
+ 
+<h2 class="categoria" id="colores">Colores </h2>
+ 
+<div class="etiqueta-bloque " id="colores-color-por-nombre">
+  <h3 class="etiqueta-nombre">Color por nombre </h3>
+  <p class="descripcion">Un color con nombre en inglés directamente (hay unos 140). Rápido para prototipar, pero poco preciso si necesitas un tono exacto de marca.</p>
+  <pre class="codigo"><code>h1 { color: antiquewhite; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="colores-color-hexadecimal-#">
+  <h3 class="etiqueta-nombre">Color hexadecimal (#) </h3>
+  <p class="descripcion">El código de 6 cifras (0-9, A-F) que representa rojo-verde-azul. Es el estándar real del diseño: Figma/Photoshop te dan el hex directamente para copiarlo.</p>
+  <pre class="codigo"><code>h1 { color: #39ff6a; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="colores-rgb-decimal">
+  <h3 class="etiqueta-nombre">RGB decimal </h3>
+  <p class="descripcion">El mismo rojo-verde-azul pero escrito como 3 números de 0 a 255 en vez de hex. Útil cuando quieres ajustar un color a mano jugando con cada canal.</p>
+  <pre class="codigo"><code>h1 { color: rgb(52, 152, 219); }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="colores-rgb-porcentual">
+  <h3 class="etiqueta-nombre">RGB porcentual </h3>
+  <p class="descripcion">Lo mismo que RGB decimal, pero en porcentaje (0% a 100%) en vez de 0-255. Mismo resultado final, solo cambia cómo lo piensas.</p>
+  <pre class="codigo"><code>h1 { color: rgb(20%, 60%, 80%); }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="colores-rgba">
+  <h3 class="etiqueta-nombre">RGBA </h3>
+  <p class="descripcion">RGB con un cuarto valor, el alpha, que va de 0 (invisible) a 1 (sólido) — no de 0 a 100. Se usa muchísimo para fondos semitransparentes o overlays encima de imágenes.</p>
+  <pre class="codigo"><code>div { background-color: rgba(0, 0, 0, 0.5); }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="colores-hsl">
+  <h3 class="etiqueta-nombre">HSL </h3>
+  <p class="descripcion">Describe el color por tono (0-360, como una rueda de colores), saturación y luminosidad (ambas en %). Muy útil para crear variantes más claras u oscuras del MISMO color cambiando solo la luminosidad, manteniendo la paleta coherente.</p>
+  <pre class="codigo"><code>h1 { color: hsl(140, 80%, 50%); }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="unidades">Unidades </h2>
+ 
+<div class="etiqueta-bloque " id="unidades-px-pixeles">
+  <h3 class="etiqueta-nombre">px (píxeles) </h3>
+  <p class="descripcion">Unidad absoluta y fija: un tamaño en px no cambia pase lo que pase. Se usa cuando quieres control total, como un borde de 1px o 2px.</p>
+  <pre class="codigo"><code>.Caja_Titulo { border-width: 2px; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="unidades-em">
+  <h3 class="etiqueta-nombre">em </h3>
+  <p class="descripcion">Relativa al tamaño de fuente del elemento PADRE. Si anidas varios elementos con em, el tamaño se va multiplicando entre ellos (se acumula), lo cual puede descontrolarse si no tienes cuidado.</p>
+  <pre class="codigo"><code>.Titulos { font-size: 1.5em; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="unidades-rem">
+  <h3 class="etiqueta-nombre">rem </h3>
+  <p class="descripcion">Relativa al tamaño de fuente de la raíz (&lt;html&gt;), NO del padre directo. Por eso es más predecible que em: 1rem siempre es el mismo tamaño en toda la página, sin importar dónde esté anidado el elemento. Es lo recomendado para tamaños de fuente en proyectos reales.</p>
+  <pre class="codigo"><code>h1 { font-size: 2rem; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="unidades-%-porcentaje">
+  <h3 class="etiqueta-nombre">% (porcentaje) </h3>
+  <p class="descripcion">Relativo al tamaño del contenedor (el padre). Sirve para diseños fluidos, que se adaptan al tamaño de lo que los rodea en vez de tener una medida fija.</p>
+  <pre class="codigo"><code>table { width: 90%; }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="box-model-y-box-sizing">Box Model y box-sizing </h2>
+ 
+<div class="etiqueta-bloque " id="box-model-y-box-sizing-width-height">
+  <h3 class="etiqueta-nombre">width / height </h3>
+  <p class="descripcion">El ancho y el alto del contenido de la caja. Importante: qué incluye exactamente depende de box-sizing (ver siguiente).</p>
+  <pre class="codigo"><code>.Caja_Titulo { width: fit-content; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="box-model-y-box-sizing-padding">
+  <h3 class="etiqueta-nombre">padding </h3>
+  <p class="descripcion">El espacio entre el contenido y el borde de la caja, por dentro. Sirve para que el texto o la imagen no estén pegados al borde.</p>
+  <pre class="codigo"><code>.Caja_Titulo { padding: 10px 20px; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="box-model-y-box-sizing-border">
+  <h3 class="etiqueta-nombre">border </h3>
+  <p class="descripcion">El marco alrededor de la caja, entre el padding y el margin. Necesita style + width + color para verse (si falta alguno, el borde no aparece).</p>
+  <pre class="codigo"><code>.Caja_Titulo { border: 2px solid #39ff6a; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="box-model-y-box-sizing-margin">
+  <h3 class="etiqueta-nombre">margin </h3>
+  <p class="descripcion">El espacio FUERA de la caja, entre ella y los elementos de alrededor. Con margin: 0 auto puedes centrar horizontalmente una caja de ancho fijo (fit-content, por ejemplo).</p>
+  <pre class="codigo"><code>.Caja_Titulo { margin: 0 auto; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="box-model-y-box-sizing-box-sizing--content-box">
+  <h3 class="etiqueta-nombre">box-sizing: content-box </h3>
+  <p class="descripcion">Es el valor por defecto del navegador si no dices nada. El width que escribes SOLO mide el contenido; el padding y el border se suman por fuera, así que la caja real en pantalla acaba siendo más grande de lo que pusiste.</p>
+  <pre class="codigo"><code>/* width:200px + padding:15px + border:15px
+   -&gt; caja real = 230px, no 200px */
+div { box-sizing: content-box; width: 200px; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="box-model-y-box-sizing-box-sizing--border-box">
+  <h3 class="etiqueta-nombre">box-sizing: border-box </h3>
+  <p class="descripcion">El width que escribes YA incluye el padding y el border dentro. Así el tamaño que pones en el CSS es el tamaño real en pantalla, sin sorpresas. Por eso se suele poner *{box-sizing: border-box} al principio de todo el archivo.</p>
+  <pre class="codigo"><code>/* width:200px + padding:15px + border:15px
+   -&gt; caja real = 200px igualmente */
+* { box-sizing: border-box; }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="visibility-y-display-none">Visibility y display:none </h2>
+ 
+<div class="etiqueta-bloque " id="visibility-y-display-none-visibility--visible">
+  <h3 class="etiqueta-nombre">visibility: visible </h3>
+  <p class="descripcion">El estado normal, el elemento se ve. Sirve sobre todo como contraste para entender los otros dos valores.</p>
+  <pre class="codigo"><code>.Caja { visibility: visible; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="visibility-y-display-none-visibility--hidden">
+  <h3 class="etiqueta-nombre">visibility: hidden </h3>
+  <p class="descripcion">El elemento desaparece visualmente pero su hueco se queda vacío en la página (el resto de elementos no se mueven). Útil para ocultar algo sin que el diseño salte, como un aviso que aparece/desaparece.</p>
+  <pre class="codigo"><code>#Visibilidad { visibility: hidden; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="visibility-y-display-none-visibility--collapse">
+  <h3 class="etiqueta-nombre">visibility: collapse </h3>
+  <p class="descripcion">Igual que hidden, pero con una excepción importante: en filas de tabla (&lt;tr&gt;) SÍ que elimina la fila entera y el resto de filas se recolocan hacia arriba. Fuera de tablas se comporta como hidden normal.</p>
+  <pre class="codigo"><code>tr.oculta { visibility: collapse; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="visibility-y-display-none-display--none">
+  <h3 class="etiqueta-nombre">display: none </h3>
+  <p class="descripcion">Elimina el elemento Y su hueco por completo, como si no existiera en la página. A diferencia de visibility:hidden, aquí todo lo de alrededor SÍ se mueve para ocupar el espacio libre.</p>
+  <pre class="codigo"><code>.oculto { display: none; }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="fondos-background">Fondos (background) </h2>
+ 
+<div class="etiqueta-bloque " id="fondos-background-background-color">
+  <h3 class="etiqueta-nombre">background-color </h3>
+  <p class="descripcion">Pone un color de fondo liso, sin necesitar ninguna imagen.</p>
+  <pre class="codigo"><code>body { background-color: #0b0f0c; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="fondos-background-background-image">
+  <h3 class="etiqueta-nombre">background-image </h3>
+  <p class="descripcion">Pone una imagen de fondo (textura, logo, foto). Se escribe con url(...).</p>
+  <pre class="codigo"><code>header { background-image: url(&quot;fondo.png&quot;); }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="fondos-background-background-repeat">
+  <h3 class="etiqueta-nombre">background-repeat </h3>
+  <p class="descripcion">Por defecto la imagen de fondo se repite en mosaico en los dos ejes. Con no-repeat lo desactivas si solo quieres una copia.</p>
+  <pre class="codigo"><code>header { background-image: url(&quot;textura.png&quot;); background-repeat: no-repeat; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="fondos-background-background-position">
+  <h3 class="etiqueta-nombre">background-position </h3>
+  <p class="descripcion">Controla qué parte de la imagen se ve cuando no entra entera en la caja (ej: centrarla).</p>
+  <pre class="codigo"><code>header { background-position: center; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="fondos-background-background-size--cover">
+  <h3 class="etiqueta-nombre">background-size: cover </h3>
+  <p class="descripcion">Hace que la imagen de fondo llene toda la caja sin dejar huecos ni deformarse, recortando lo que no entre. Es el truco típico para cabeceras grandes de página.</p>
+  <pre class="codigo"><code>header { background-size: cover; }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="bordes">Bordes </h2>
+ 
+<div class="etiqueta-bloque " id="bordes-border-style">
+  <h3 class="etiqueta-nombre">border-style </h3>
+  <p class="descripcion">El tipo de línea del borde: solid (línea seguida), dotted (puntos), dashed (rayas), etc. Sin esto, el borde no se ve aunque pongas width y color.</p>
+  <pre class="codigo"><code>.Caja_Titulo { border-style: solid; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="bordes-border-width">
+  <h3 class="etiqueta-nombre">border-width </h3>
+  <p class="descripcion">Lo grueso que es el borde. Puedes usar palabras (thin/medium/thick) o un valor en px.</p>
+  <pre class="codigo"><code>.Caja_Titulo { border-width: 3px; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="bordes-border-radius">
+  <h3 class="etiqueta-nombre">border-radius </h3>
+  <p class="descripcion">Redondea las esquinas de la caja. Con un valor igual a la mitad del ancho/alto (ej: 50%) consigues un círculo perfecto a partir de una caja cuadrada.</p>
+  <pre class="codigo"><code>.Caja_Titulo { border-radius: 12px; }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="posicionamiento">Posicionamiento </h2>
+ 
+<div class="etiqueta-bloque " id="posicionamiento-position--static">
+  <h3 class="etiqueta-nombre">position: static </h3>
+  <p class="descripcion">El comportamiento normal por defecto: cada elemento sigue el flujo de la página, uno detrás de otro, sin que top/left/etc tengan ningún efecto.</p>
+  <pre class="codigo"><code>p { position: static; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="posicionamiento-position--relative">
+  <h3 class="etiqueta-nombre">position: relative </h3>
+  <p class="descripcion">El elemento se mueve respecto a donde estaría normalmente (con top/left/right/bottom), pero deja su hueco original vacío donde estaba. Además sirve de ancla: si un hijo suyo tiene position:absolute, se va a posicionar respecto a este relative.</p>
+  <pre class="codigo"><code>.Caja { position: relative; top: 10px; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="posicionamiento-position--absolute">
+  <h3 class="etiqueta-nombre">position: absolute </h3>
+  <p class="descripcion">Saca el elemento del flujo normal por completo y lo coloca en un punto exacto respecto al ancestro posicionado (relative/absolute) más cercano. Si no hay ninguno, se posiciona respecto a toda la página.</p>
+  <pre class="codigo"><code>.Navbar { position: absolute; top: 0; right: 0; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque " id="posicionamiento-float--left-right">
+  <h3 class="etiqueta-nombre">float: left / right </h3>
+  <p class="descripcion">Saca el elemento del flujo normal pero deja que el texto y otros elementos lo rodeen, como en una revista o periódico. Si el padre solo tiene hijos flotados, se colapsa (pierde su altura), por eso se suele arreglar con clear en el siguiente elemento.</p>
+  <pre class="codigo"><code>.Texto_Rodeando { float: left; margin-right: 15px; }
+address { clear: both; }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="display-flexbox-y-grid">Display, Flexbox y Grid <span class="badge-pendiente">AÚN NO DADO EN CLASE</span></h2>
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-display--block">
+  <h3 class="etiqueta-nombre">display: block <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">El elemento ocupa toda la línea disponible, de borde a borde, y el siguiente elemento se va a la línea de abajo. Es el comportamiento por defecto de etiquetas como div, p o h1.</p>
+  <pre class="codigo"><code>div { display: block; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-display--inline">
+  <h3 class="etiqueta-nombre">display: inline <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">El elemento solo ocupa el espacio de su contenido, se coloca en línea con el texto de alrededor, y NO acepta width/height ni margin vertical. Es el comportamiento por defecto de a, span, b...</p>
+  <pre class="codigo"><code>span { display: inline; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-display--inline-block">
+  <h3 class="etiqueta-nombre">display: inline-block <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Lo mejor de los dos mundos: se coloca en línea como inline, pero SÍ acepta width, height y margin, como block. Se usa mucho para centrar una caja exactamente a su contenido.</p>
+  <pre class="codigo"><code>.Caja_Titulo { display: inline-block; width: fit-content; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-display--flex">
+  <h3 class="etiqueta-nombre">display: flex <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Convierte el elemento en un contenedor flexible: sus hijos directos se organizan en fila (o columna) y se pueden alinear, repartir el espacio y centrar fácilmente, sin los líos de float.</p>
+  <pre class="codigo"><code>nav { display: flex; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-display--grid">
+  <h3 class="etiqueta-nombre">display: grid <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Convierte el elemento en una rejilla de filas y columnas, donde colocas a los hijos en celdas concretas. Pensado para maquetaciones más complejas que una simple fila (flex).</p>
+  <pre class="codigo"><code>.Tablero { display: grid; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-flex-direction">
+  <h3 class="etiqueta-nombre">flex-direction <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Dentro de un display:flex, decide si los hijos van en fila (row, por defecto) o en columna (column).</p>
+  <pre class="codigo"><code>nav { display: flex; flex-direction: row; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-justify-content">
+  <h3 class="etiqueta-nombre">justify-content <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Dentro de flex, reparte el espacio en el eje principal (horizontal si es row): center, space-between, space-around, flex-start, flex-end.</p>
+  <pre class="codigo"><code>nav { display: flex; justify-content: space-between; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-align-items">
+  <h3 class="etiqueta-nombre">align-items <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Dentro de flex, alinea los hijos en el eje contrario al principal (vertical si es row): center, flex-start, flex-end, stretch.</p>
+  <pre class="codigo"><code>nav { display: flex; align-items: center; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-flex-wrap">
+  <h3 class="etiqueta-nombre">flex-wrap <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Dentro de flex, decide si los hijos pueden pasar a una nueva línea cuando no entran todos (wrap) o se quedan apretados en una sola línea (nowrap, por defecto).</p>
+  <pre class="codigo"><code>nav { display: flex; flex-wrap: wrap; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-gap">
+  <h3 class="etiqueta-nombre">gap <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">El espacio entre los hijos de un flex o un grid, sin tener que poner margin manual en cada uno.</p>
+  <pre class="codigo"><code>nav { display: flex; gap: 20px; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-flex-shorthand-en-el-hijo">
+  <h3 class="etiqueta-nombre">flex (shorthand en el hijo) <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Se pone en un hijo de un flex, no en el contenedor: decide cuánto crece o encoge ese hijo respecto a los demás para repartirse el espacio sobrante.</p>
+  <pre class="codigo"><code>.item { flex: 1; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-grid-template-columns">
+  <h3 class="etiqueta-nombre">grid-template-columns <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Dentro de display:grid, define cuántas columnas hay y de qué ancho (ej: 3 columnas iguales con repeat).</p>
+  <pre class="codigo"><code>.Tablero { display: grid; grid-template-columns: repeat(3, 1fr); }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-grid-template-rows">
+  <h3 class="etiqueta-nombre">grid-template-rows <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Igual que grid-template-columns pero para definir las filas.</p>
+  <pre class="codigo"><code>.Tablero { grid-template-rows: 100px 200px; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-gap-en-grid">
+  <h3 class="etiqueta-nombre">gap (en grid) <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">El espacio entre celdas de la rejilla, tanto entre filas como entre columnas.</p>
+  <pre class="codigo"><code>.Tablero { display: grid; gap: 10px; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-grid-column">
+  <h3 class="etiqueta-nombre">grid-column <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">En un hijo de un grid, le dice en qué columna (o rango de columnas) colocarse.</p>
+  <pre class="codigo"><code>.Destacado { grid-column: 1 / 3; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-grid-row">
+  <h3 class="etiqueta-nombre">grid-row <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Igual que grid-column pero para decidir en qué fila (o rango de filas) colocarse.</p>
+  <pre class="codigo"><code>.Destacado { grid-row: 1 / 2; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="display-flexbox-y-grid-flex-vs-grid-cuando-usar-cada-uno">
+  <h3 class="etiqueta-nombre">Flex vs Grid (cuándo usar cada uno) <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Flex es ideal para una sola dimensión (una fila o una columna, como un menú o una barra de botones). Grid es para dos dimensiones a la vez (filas Y columnas, como una galería de imágenes o el layout completo de una página).</p>
+  <pre class="codigo"><code>/* Menu -&gt; flex. Layout de pagina entera -&gt; grid. */</code></pre>
+</div>
+ 
+<h2 class="categoria" id="especificidad-y-cascada">Especificidad y cascada <span class="badge-pendiente">AÚN NO DADO EN CLASE</span></h2>
+ 
+<div class="etiqueta-bloque pendiente" id="especificidad-y-cascada-especificidad">
+  <h3 class="etiqueta-nombre">Especificidad <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Es la jerarquía de poder entre selectores cuando dos reglas afectan al mismo elemento: un ID gana siempre a una clase, y una clase gana siempre a un selector de tipo. Si hay empate, gana el que está escrito más abajo en el archivo (por eso el orden LVHA importa).</p>
+  <pre class="codigo"><code>#Titulo { color: red; }     /* gana esta (ID) */
+.Titulos { color: blue; }   /* aunque este despues */</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="especificidad-y-cascada-!important">
+  <h3 class="etiqueta-nombre">!important <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Fuerza que esa propiedad gane SIEMPRE, saltándose la especificidad normal. Es un parche de emergencia: si lo usas mucho, es señal de que el CSS está desordenado, así que se recomienda evitarlo salvo casos puntuales.</p>
+  <pre class="codigo"><code>.Titulos { color: green !important; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="especificidad-y-cascada-inherit">
+  <h3 class="etiqueta-nombre">inherit <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Le dice a una propiedad que copie el valor de su elemento padre, aunque esa propiedad normalmente no se herede sola.</p>
+  <pre class="codigo"><code>.hijo { color: inherit; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="especificidad-y-cascada-initial">
+  <h3 class="etiqueta-nombre">initial <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Resetea la propiedad a su valor por defecto del navegador, ignorando cualquier CSS que hayas escrito o heredado.</p>
+  <pre class="codigo"><code>.reset { color: initial; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="especificidad-y-cascada-unset">
+  <h3 class="etiqueta-nombre">unset <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Mezcla de los dos anteriores: si la propiedad normalmente se hereda, actúa como inherit; si no, actúa como initial.</p>
+  <pre class="codigo"><code>.reset { margin: unset; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="especificidad-y-cascada-orden-de-la-cascada">
+  <h3 class="etiqueta-nombre">Orden de la cascada <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Cuando hay empate total de especificidad, gana la regla que está escrita más abajo en el archivo CSS (o la que se carga después). Por eso el orden en que escribes las reglas también importa, no solo lo fuerte que sea el selector.</p>
+  <pre class="codigo"><code>a:link { color: blue; }
+a:hover { color: orange; } /* si estuviera arriba, no se veria */</code></pre>
+</div>
+ 
+<h2 class="categoria" id="tipografia">Tipografía <span class="badge-pendiente">AÚN NO DADO EN CLASE</span></h2>
+ 
+<div class="etiqueta-bloque pendiente" id="tipografia-font-family">
+  <h3 class="etiqueta-nombre">font-family <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">La tipografía (letra) del texto. Se pone una lista de opciones por si la primera no está instalada en el ordenador del usuario, terminando en una genérica como sans-serif.</p>
+  <pre class="codigo"><code>body { font-family: &quot;Courier New&quot;, monospace; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="tipografia-font-size">
+  <h3 class="etiqueta-nombre">font-size <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">El tamaño de la letra. Se recomienda usar rem en vez de px para que respete mejor la accesibilidad (zoom del navegador).</p>
+  <pre class="codigo"><code>h1 { font-size: 2rem; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="tipografia-font-weight">
+  <h3 class="etiqueta-nombre">font-weight <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Lo gruesa que es la letra: normal (400), bold (700), o un número de 100 a 900. Ojo: es un valor SIN unidad, nunca font-weight:300px.</p>
+  <pre class="codigo"><code>h1 { font-weight: 700; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="tipografia-font-style">
+  <h3 class="etiqueta-nombre">font-style <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Para poner la letra en cursiva (italic) o quitarla (normal).</p>
+  <pre class="codigo"><code>blockquote { font-style: italic; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="tipografia-line-height">
+  <h3 class="etiqueta-nombre">line-height <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">La altura de cada línea de texto. Subirlo un poco (ej: 1.5) hace que los párrafos largos se lean mucho más cómodos, con más aire entre líneas.</p>
+  <pre class="codigo"><code>p { line-height: 1.5; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="tipografia-text-align">
+  <h3 class="etiqueta-nombre">text-align <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Alinea el texto dentro de su caja: left, right, center, justify.</p>
+  <pre class="codigo"><code>header { text-align: center; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="tipografia-text-transform">
+  <h3 class="etiqueta-nombre">text-transform <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Cambia cómo se ve el texto sin tocar el HTML: uppercase (mayúsculas), lowercase (minúsculas), capitalize (primera letra de cada palabra).</p>
+  <pre class="codigo"><code>.Titulos { text-transform: uppercase; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="tipografia-letter-spacing">
+  <h3 class="etiqueta-nombre">letter-spacing <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">El espacio entre letras. Un poco de espacio extra se usa mucho en títulos para dar sensación más elegante o cuidada.</p>
+  <pre class="codigo"><code>h1 { letter-spacing: 2px; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="tipografia-text-shadow">
+  <h3 class="etiqueta-nombre">text-shadow <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Pone una sombra al texto: desplazamiento horizontal, vertical, difuminado y color.</p>
+  <pre class="codigo"><code>h1 { text-shadow: 0 0 8px #1f9e4f; }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="transformaciones-y-animaciones">Transformaciones y animaciones <span class="badge-pendiente">AÚN NO DADO EN CLASE</span></h2>
+ 
+<div class="etiqueta-bloque pendiente" id="transformaciones-y-animaciones-transform">
+  <h3 class="etiqueta-nombre">transform <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Mueve, rota o escala un elemento SIN afectar al flujo de la página (los demás elementos no se enteran del cambio visual). Funciones típicas: scale(), rotate(), translate().</p>
+  <pre class="codigo"><code>.Caja:hover { transform: scale(1.1); }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="transformaciones-y-animaciones-transition">
+  <h3 class="etiqueta-nombre">transition <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Hace que el cambio entre un estado y otro (por ejemplo al pasar el :hover) sea suave en vez de instantáneo. Se indica qué propiedad animar y cuánto tiempo tarda.</p>
+  <pre class="codigo"><code>.Caja { transition: transform 0.3s; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="transformaciones-y-animaciones-animation">
+  <h3 class="etiqueta-nombre">animation <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Aplica una animación definida con @keyframes a un elemento: cuánto dura, cuántas veces se repite, etc.</p>
+  <pre class="codigo"><code>.Logo { animation: aparecer 2s ease-in; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="transformaciones-y-animaciones-@keyframes">
+  <h3 class="etiqueta-nombre">@keyframes <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Define los pasos de una animación: qué aspecto tiene al 0%, a mitad, y al 100%. Es la receta que luego usa la propiedad animation.</p>
+  <pre class="codigo"><code>@keyframes aparecer {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}</code></pre>
+</div>
+ 
+<h2 class="categoria" id="sombras-y-efectos-visuales">Sombras y efectos visuales <span class="badge-pendiente">AÚN NO DADO EN CLASE</span></h2>
+ 
+<div class="etiqueta-bloque pendiente" id="sombras-y-efectos-visuales-box-shadow">
+  <h3 class="etiqueta-nombre">box-shadow <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Pone una sombra a toda la caja (no solo al texto): desplazamiento horizontal, vertical, difuminado y color. Da sensación de profundidad, como si la caja flotara sobre la página.</p>
+  <pre class="codigo"><code>.Caja_Titulo { box-shadow: 4px 4px 10px rgba(0,0,0,0.5); }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="sombras-y-efectos-visuales-opacity">
+  <h3 class="etiqueta-nombre">opacity <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">La transparencia de TODO el elemento (contenido incluido), de 0 (invisible) a 1 (sólido). A diferencia de rgba, aquí también se vuelve transparente el texto de dentro, no solo el fondo.</p>
+  <pre class="codigo"><code>.Caja_Desactivada { opacity: 0.5; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="sombras-y-efectos-visuales-filter">
+  <h3 class="etiqueta-nombre">filter <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Aplica efectos tipo Photoshop directamente con CSS: blur() (difuminar), grayscale() (blanco y negro), brightness() (brillo), etc.</p>
+  <pre class="codigo"><code>img:hover { filter: grayscale(100%); }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="variables-css">Variables CSS <span class="badge-pendiente">AÚN NO DADO EN CLASE</span></h2>
+ 
+<div class="etiqueta-bloque pendiente" id="variables-css--variable-custom-property">
+  <h3 class="etiqueta-nombre">--variable (custom property) <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Guardas un valor (un color, una medida...) con un nombre propio para reutilizarlo en todo el archivo. Si luego cambias esa única línea, cambia en todos los sitios donde se usó. Se define normalmente dentro de :root.</p>
+  <pre class="codigo"><code>:root {
+  --color-principal: #39ff6a;
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="variables-css-var">
+  <h3 class="etiqueta-nombre">var() <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Así es como USAS la variable que definiste con --variable, en cualquier propiedad.</p>
+  <pre class="codigo"><code>h1 { color: var(--color-principal); }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="responsive-media-queries">Responsive / Media queries <span class="badge-pendiente">AÚN NO DADO EN CLASE</span></h2>
+ 
+<div class="etiqueta-bloque pendiente" id="responsive-media-queries-@media">
+  <h3 class="etiqueta-nombre">@media <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Aplica un bloque de CSS SOLO si se cumple una condición sobre la pantalla (ancho, alto, orientación...). Es la base de hacer una web responsive, que se adapta a móvil y a ordenador.</p>
+  <pre class="codigo"><code>@media (max-width: 600px) {
+  nav { flex-direction: column; }
+}</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="responsive-media-queries-breakpoints-max-width-min-width">
+  <h3 class="etiqueta-nombre">Breakpoints (max-width / min-width) <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Los puntos de corte donde cambias el diseño: max-width aplica cuando la pantalla es MENOR a ese valor (típico para móvil), min-width cuando es MAYOR (típico para escritorio).</p>
+  <pre class="codigo"><code>@media (min-width: 1024px) {
+  .Contenedor { width: 960px; }
+}</code></pre>
+</div>
+ 
+<h2 class="categoria" id="selectores-y-pseudoclases-avanzadas">Selectores y pseudoclases avanzadas <span class="badge-pendiente">AÚN NO DADO EN CLASE</span></h2>
+ 
+<div class="etiqueta-bloque pendiente" id="selectores-y-pseudoclases-avanzadas--first-child">
+  <h3 class="etiqueta-nombre">:first-child <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Selecciona un elemento solo si es el PRIMER hijo de su padre.</p>
+  <pre class="codigo"><code>li:first-child { font-weight: bold; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="selectores-y-pseudoclases-avanzadas--last-child">
+  <h3 class="etiqueta-nombre">:last-child <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Selecciona un elemento solo si es el ÚLTIMO hijo de su padre.</p>
+  <pre class="codigo"><code>li:last-child { margin-bottom: 0; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="selectores-y-pseudoclases-avanzadas--nth-child">
+  <h3 class="etiqueta-nombre">:nth-child() <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Selecciona hijos según su posición con una fórmula: el número exacto, o patrones como even (pares) / odd (impares) / 3n (cada 3).</p>
+  <pre class="codigo"><code>tr:nth-child(even) { background-color: #111; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="selectores-y-pseudoclases-avanzadas--not">
+  <h3 class="etiqueta-nombre">:not() <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Selecciona todo LO QUE NO cumpla lo que pongas dentro del paréntesis. Útil para decir &quot;todos menos este caso&quot;.</p>
+  <pre class="codigo"><code>input:not([type=&quot;submit&quot;]) { border: 1px solid gray; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="selectores-y-pseudoclases-avanzadas--focus">
+  <h3 class="etiqueta-nombre">:focus <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">El estado de un campo cuando el usuario ha hecho click dentro y está escribiendo (tiene el foco). Muy usado en formularios para resaltar el campo activo.</p>
+  <pre class="codigo"><code>input:focus { border-color: #39ff6a; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="selectores-y-pseudoclases-avanzadas--checked">
+  <h3 class="etiqueta-nombre">:checked <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">El estado de un checkbox o radio cuando está marcado/seleccionado.</p>
+  <pre class="codigo"><code>input[type=&quot;radio&quot;]:checked { accent-color: green; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="selectores-y-pseudoclases-avanzadas--disabled">
+  <h3 class="etiqueta-nombre">:disabled <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">El estado de un campo de formulario cuando está desactivado (el usuario no puede tocarlo).</p>
+  <pre class="codigo"><code>button:disabled { opacity: 0.5; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="selectores-y-pseudoclases-avanzadas--before--after">
+  <h3 class="etiqueta-nombre">::before / ::after <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Insertan contenido ANTES o DESPUÉS del contenido real del elemento, generado solo con CSS (necesitan la propiedad content). Se usan mucho para iconos decorativos o comillas automáticas.</p>
+  <pre class="codigo"><code>.Titulos::before { content: &quot;&gt; &quot;; }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="overflow">Overflow <span class="badge-pendiente">AÚN NO DADO EN CLASE</span></h2>
+ 
+<div class="etiqueta-bloque pendiente" id="overflow-overflow">
+  <h3 class="etiqueta-nombre">overflow <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Decide qué pasa cuando el contenido de una caja es más grande que la caja misma: visible (se sale, por defecto), hidden (se recorta), scroll (aparece una barra de scroll siempre), auto (barra de scroll solo si hace falta).</p>
+  <pre class="codigo"><code>.Caja_Texto { overflow: auto; height: 200px; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="overflow-overflow-x-overflow-y">
+  <h3 class="etiqueta-nombre">overflow-x / overflow-y <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Igual que overflow, pero controlando el eje horizontal y vertical por separado.</p>
+  <pre class="codigo"><code>.Tabla_Scroll { overflow-x: auto; overflow-y: hidden; }</code></pre>
+</div>
+ 
+<h2 class="categoria" id="otras-propiedades-utiles-de-layout">Otras propiedades útiles de layout <span class="badge-pendiente">AÚN NO DADO EN CLASE</span></h2>
+ 
+<div class="etiqueta-bloque pendiente" id="otras-propiedades-utiles-de-layout-z-index">
+  <h3 class="etiqueta-nombre">z-index <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Decide qué elemento queda POR ENCIMA de otro cuando se superponen (solo funciona si el elemento tiene position distinto de static). El número más alto gana y se ve por delante.</p>
+  <pre class="codigo"><code>.Navbar { position: absolute; z-index: 10; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="otras-propiedades-utiles-de-layout-cursor">
+  <h3 class="etiqueta-nombre">cursor <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Cambia el icono del ratón al pasar por encima del elemento, por ejemplo para indicar que algo es clicable aunque no sea un enlace real.</p>
+  <pre class="codigo"><code>.Boton_Falso { cursor: pointer; }</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque pendiente" id="otras-propiedades-utiles-de-layout-object-fit">
+  <h3 class="etiqueta-nombre">object-fit <span class="mini-badge">⚠ pendiente en clase</span></h3>
+  <p class="descripcion">Para imágenes o vídeos dentro de una caja de tamaño fijo: decide si se recortan para llenar la caja (cover) o se ven enteras aunque quede espacio vacío (contain), evitando que se deformen.</p>
+  <pre class="codigo"><code>img.avatar { width: 100px; height: 100px; object-fit: cover; }</code></pre>
+</div>
+ 
+</main>
+ 
+</body>
+</html>
+ 
