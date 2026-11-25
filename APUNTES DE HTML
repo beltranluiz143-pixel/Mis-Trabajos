@@ -1,0 +1,1073 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apuntes HTML - Beltrán</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    background-color: #0b0f0c;
+    color: #c8ffd4;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+  .portada {
+    padding: 40px 20px 20px 20px;
+    text-align: center;
+    border-bottom: 2px solid #1f9e4f;
+  }
+  .portada h1 {
+    color: #39ff6a;
+    font-size: 2.2em;
+    margin: 0 0 8px 0;
+    text-shadow: 0 0 8px #1f9e4f55;
+  }
+  .portada p {
+    color: #8fd9a8;
+    max-width: 700px;
+    margin: 10px auto;
+  }
+  .indice {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #0f1711;
+    border: 1px solid #1f9e4f;
+    border-radius: 8px;
+  }
+  .indice h2 {
+    color: #39ff6a;
+    margin-top: 0;
+  }
+  .arbol {
+    white-space: pre;
+    font-size: 0.95em;
+    overflow-x: auto;
+    color: #a6ffc0;
+  }
+  .arbol a {
+    color: #c8ffd4;
+    text-decoration: none;
+  }
+  .arbol a:hover {
+    color: #39ff6a;
+    text-decoration: underline;
+  }
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px 20px 80px 20px;
+  }
+  h2.categoria {
+    color: #0b0f0c;
+    background-color: #1f9e4f;
+    padding: 10px 16px;
+    border-radius: 6px;
+    margin-top: 60px;
+    font-size: 1.3em;
+  }
+  .etiqueta-bloque {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #1f9e4f55;
+  }
+  .etiqueta-nombre {
+    color: #39ff6a;
+    font-size: 1.4em;
+    margin: 0 0 10px 0;
+  }
+  .descripcion {
+    color: #dfffe6;
+    font-size: 1.02em;
+    margin: 0 0 14px 0;
+    max-width: 700px;
+  }
+  .codigo {
+    background-color: #06170c;
+    border: 1px solid #1f9e4f;
+    border-radius: 6px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    color: #a6ffc0;
+    font-size: 0.95em;
+  }
+  a { color: #39ff6a; }
+  .volver {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.8em;
+    color: #6fae82;
+    text-decoration: none;
+  }
+  .volver:hover { color: #39ff6a; }
+</style>
+</head>
+<body>
+
+<!--Estos son unos apuntes de el lenguaje de programaccion de HTML basado en lo que eh dado en clase hasta ahora, siendo que una parte lo de las etiquetas fueron buscvadas en la web W3School. En mas que todo una guia de explicacion basica para todo aquellos que quieran apredner HTML a nivel medio 
+
+
+
+
+<div class="portada">
+  <h1>APUNTES DE HTML</h1>
+  <p>Referencia completa de etiquetas: las que ya has usado en tus proyectos (VGC, BGCX) + todas las que te faltan para tener el panorama entero de HTML5, según W3Schools y lo que se pide en DAM. Objetivo: aprender a programar de verdad para poder construir tú mismo la web de FlipSide.</p>
+</div>
+ 
+<div class="indice">
+<h2>Índice (estructura del documento)</h2>
+<pre class="arbol">APUNTES HTML - BELTRÁN
+|
+|-- Estructura base y metadatos (7)
+|     |-- <a href="#estructura-base-y-metadatos-html">&lt;html&gt;</a>
+|     |-- <a href="#estructura-base-y-metadatos-head">&lt;head&gt;</a>
+|     |-- <a href="#estructura-base-y-metadatos-body">&lt;body&gt;</a>
+|     |-- <a href="#estructura-base-y-metadatos-title">&lt;title&gt;</a>
+|     |-- <a href="#estructura-base-y-metadatos-meta">&lt;meta&gt;</a>
+|     |-- <a href="#estructura-base-y-metadatos-link">&lt;link&gt;</a>
+|      -- <a href="#estructura-base-y-metadatos-style">&lt;style&gt;</a>
+|-- Semántica estructural (16)
+|     |-- <a href="#semantica-estructural-header">&lt;header&gt;</a>
+|     |-- <a href="#semantica-estructural-footer">&lt;footer&gt;</a>
+|     |-- <a href="#semantica-estructural-nav">&lt;nav&gt;</a>
+|     |-- <a href="#semantica-estructural-section">&lt;section&gt;</a>
+|     |-- <a href="#semantica-estructural-div">&lt;div&gt;</a>
+|     |-- <a href="#semantica-estructural-address">&lt;address&gt;</a>
+|     |-- <a href="#semantica-estructural-figure">&lt;figure&gt;</a>
+|     |-- <a href="#semantica-estructural-main">&lt;main&gt;</a>
+|     |-- <a href="#semantica-estructural-article">&lt;article&gt;</a>
+|     |-- <a href="#semantica-estructural-aside">&lt;aside&gt;</a>
+|     |-- <a href="#semantica-estructural-figcaption">&lt;figcaption&gt;</a>
+|     |-- <a href="#semantica-estructural-mark">&lt;mark&gt;</a>
+|     |-- <a href="#semantica-estructural-time">&lt;time&gt;</a>
+|     |-- <a href="#semantica-estructural-details">&lt;details&gt;</a>
+|     |-- <a href="#semantica-estructural-summary">&lt;summary&gt;</a>
+|      -- <a href="#semantica-estructural-dialog">&lt;dialog&gt;</a>
+|-- Texto y encabezados (30)
+|     |-- <a href="#texto-y-encabezados-h1">&lt;h1&gt;</a>
+|     |-- <a href="#texto-y-encabezados-h2">&lt;h2&gt;</a>
+|     |-- <a href="#texto-y-encabezados-h3">&lt;h3&gt;</a>
+|     |-- <a href="#texto-y-encabezados-h4">&lt;h4&gt;</a>
+|     |-- <a href="#texto-y-encabezados-p">&lt;p&gt;</a>
+|     |-- <a href="#texto-y-encabezados-br">&lt;br&gt;</a>
+|     |-- <a href="#texto-y-encabezados-hr">&lt;hr&gt;</a>
+|     |-- <a href="#texto-y-encabezados-b">&lt;b&gt;</a>
+|     |-- <a href="#texto-y-encabezados-i">&lt;i&gt;</a>
+|     |-- <a href="#texto-y-encabezados-u">&lt;u&gt;</a>
+|     |-- <a href="#texto-y-encabezados-sup">&lt;sup&gt;</a>
+|     |-- <a href="#texto-y-encabezados-sub">&lt;sub&gt;</a>
+|     |-- <a href="#texto-y-encabezados-blockquote">&lt;blockquote&gt;</a>
+|     |-- <a href="#texto-y-encabezados-strong">&lt;strong&gt;</a>
+|     |-- <a href="#texto-y-encabezados-em">&lt;em&gt;</a>
+|     |-- <a href="#texto-y-encabezados-small">&lt;small&gt;</a>
+|     |-- <a href="#texto-y-encabezados-code">&lt;code&gt;</a>
+|     |-- <a href="#texto-y-encabezados-pre">&lt;pre&gt;</a>
+|     |-- <a href="#texto-y-encabezados-kbd">&lt;kbd&gt;</a>
+|     |-- <a href="#texto-y-encabezados-var">&lt;var&gt;</a>
+|     |-- <a href="#texto-y-encabezados-cite">&lt;cite&gt;</a>
+|     |-- <a href="#texto-y-encabezados-q">&lt;q&gt;</a>
+|     |-- <a href="#texto-y-encabezados-abbr">&lt;abbr&gt;</a>
+|     |-- <a href="#texto-y-encabezados-span">&lt;span&gt;</a>
+|     |-- <a href="#texto-y-encabezados-ins">&lt;ins&gt;</a>
+|     |-- <a href="#texto-y-encabezados-del">&lt;del&gt;</a>
+|     |-- <a href="#texto-y-encabezados-wbr">&lt;wbr&gt;</a>
+|     |-- <a href="#texto-y-encabezados-bdi">&lt;bdi&gt;</a>
+|     |-- <a href="#texto-y-encabezados-bdo">&lt;bdo&gt;</a>
+|      -- <a href="#texto-y-encabezados-data">&lt;data&gt;</a>
+|-- Listas (6)
+|     |-- <a href="#listas-ul">&lt;ul&gt;</a>
+|     |-- <a href="#listas-ol">&lt;ol&gt;</a>
+|     |-- <a href="#listas-li">&lt;li&gt;</a>
+|     |-- <a href="#listas-dl">&lt;dl&gt;</a>
+|     |-- <a href="#listas-dt">&lt;dt&gt;</a>
+|      -- <a href="#listas-dd">&lt;dd&gt;</a>
+|-- Tablas (10)
+|     |-- <a href="#tablas-table">&lt;table&gt;</a>
+|     |-- <a href="#tablas-tr">&lt;tr&gt;</a>
+|     |-- <a href="#tablas-td">&lt;td&gt;</a>
+|     |-- <a href="#tablas-th">&lt;th&gt;</a>
+|     |-- <a href="#tablas-thead">&lt;thead&gt;</a>
+|     |-- <a href="#tablas-tbody">&lt;tbody&gt;</a>
+|     |-- <a href="#tablas-tfoot">&lt;tfoot&gt;</a>
+|     |-- <a href="#tablas-caption">&lt;caption&gt;</a>
+|     |-- <a href="#tablas-colgroup">&lt;colgroup&gt;</a>
+|      -- <a href="#tablas-col">&lt;col&gt;</a>
+|-- Enlaces e imágenes (2)
+|     |-- <a href="#enlaces-e-imagenes-a">&lt;a&gt;</a>
+|      -- <a href="#enlaces-e-imagenes-img">&lt;img&gt;</a>
+|-- Multimedia (7)
+|     |-- <a href="#multimedia-audio">&lt;audio&gt;</a>
+|     |-- <a href="#multimedia-video">&lt;video&gt;</a>
+|     |-- <a href="#multimedia-source">&lt;source&gt;</a>
+|     |-- <a href="#multimedia-picture">&lt;picture&gt;</a>
+|     |-- <a href="#multimedia-track">&lt;track&gt;</a>
+|     |-- <a href="#multimedia-canvas">&lt;canvas&gt;</a>
+|      -- <a href="#multimedia-svg">&lt;svg&gt;</a>
+|-- Formularios (14)
+|     |-- <a href="#formularios-form">&lt;form&gt;</a>
+|     |-- <a href="#formularios-input">&lt;input&gt;</a>
+|     |-- <a href="#formularios-select">&lt;select&gt;</a>
+|     |-- <a href="#formularios-option">&lt;option&gt;</a>
+|     |-- <a href="#formularios-textarea">&lt;textarea&gt;</a>
+|     |-- <a href="#formularios-button">&lt;button&gt;</a>
+|     |-- <a href="#formularios-label">&lt;label&gt;</a>
+|     |-- <a href="#formularios-fieldset">&lt;fieldset&gt;</a>
+|     |-- <a href="#formularios-legend">&lt;legend&gt;</a>
+|     |-- <a href="#formularios-datalist">&lt;datalist&gt;</a>
+|     |-- <a href="#formularios-output">&lt;output&gt;</a>
+|     |-- <a href="#formularios-progress">&lt;progress&gt;</a>
+|     |-- <a href="#formularios-meter">&lt;meter&gt;</a>
+|      -- <a href="#formularios-optgroup">&lt;optgroup&gt;</a>
+|-- Incrustación y scripting (6)
+|     |-- <a href="#incrustacion-y-scripting-iframe">&lt;iframe&gt;</a>
+|     |-- <a href="#incrustacion-y-scripting-embed">&lt;embed&gt;</a>
+|     |-- <a href="#incrustacion-y-scripting-object">&lt;object&gt;</a>
+|     |-- <a href="#incrustacion-y-scripting-noscript">&lt;noscript&gt;</a>
+|     |-- <a href="#incrustacion-y-scripting-script">&lt;script&gt;</a>
+|      -- <a href="#incrustacion-y-scripting-template">&lt;template&gt;</a>
+</pre>
+</div>
+ 
+<main>
+<h2 class="categoria" id="estructura-base-y-metadatos">Estructura base y metadatos</h2>
+ 
+<div class="etiqueta-bloque" id="estructura-base-y-metadatos-html">
+  <h3 class="etiqueta-nombre">&lt;html&gt;</h3>
+  <p class="descripcion">Es la caja que envuelve toda la página. Todo lo que escribes en HTML (menos el DOCTYPE) va dentro de esta etiqueta.</p>
+  <pre class="codigo"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+  ...
+&lt;/html&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="estructura-base-y-metadatos-head">
+  <h3 class="etiqueta-nombre">&lt;head&gt;</h3>
+  <p class="descripcion">La parte de la página que usa el navegador pero el usuario no ve directamente: aquí van el título, los metadatos y el link al CSS.</p>
+  <pre class="codigo"><code>&lt;head&gt;
+  &lt;title&gt;FlipSide&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;Estilos.css&quot;&gt;
+&lt;/head&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="estructura-base-y-metadatos-body">
+  <h3 class="etiqueta-nombre">&lt;body&gt;</h3>
+  <p class="descripcion">Aquí va todo lo que SÍ se ve en pantalla: textos, imágenes, tablas, formularios...</p>
+  <pre class="codigo"><code>&lt;body&gt;
+  &lt;h1&gt;Bienvenido&lt;/h1&gt;
+&lt;/body&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="estructura-base-y-metadatos-title">
+  <h3 class="etiqueta-nombre">&lt;title&gt;</h3>
+  <p class="descripcion">Pone el nombre que aparece en la pestaña del navegador y en los resultados de Google.</p>
+  <pre class="codigo"><code>&lt;title&gt;FlipSide - Inicio&lt;/title&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="estructura-base-y-metadatos-meta">
+  <h3 class="etiqueta-nombre">&lt;meta&gt;</h3>
+  <p class="descripcion">Da información que el navegador necesita pero no se muestra en pantalla: el tipo de caracteres, cómo se adapta al móvil, el autor...</p>
+  <pre class="codigo"><code>&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="estructura-base-y-metadatos-link">
+  <h3 class="etiqueta-nombre">&lt;link&gt;</h3>
+  <p class="descripcion">Conecta tu HTML con un archivo externo. Lo normal es usarlo para enlazar el CSS.</p>
+  <pre class="codigo"><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;Estilos.css&quot;&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="estructura-base-y-metadatos-style">
+  <h3 class="etiqueta-nombre">&lt;style&gt;</h3>
+  <p class="descripcion">Te deja escribir CSS directamente dentro del HTML en vez de en un archivo aparte. Vale para pruebas rápidas, pero en un proyecto real es mejor un .css externo con link.</p>
+  <pre class="codigo"><code>&lt;style&gt;
+  body { background-color: black; }
+&lt;/style&gt;</code></pre>
+</div>
+ 
+<h2 class="categoria" id="semantica-estructural">Semántica estructural</h2>
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-header">
+  <h3 class="etiqueta-nombre">&lt;header&gt;</h3>
+  <p class="descripcion">Es la cabecera de la página o de una sección: suele llevar el título, el logo o el menú de arriba.</p>
+  <pre class="codigo"><code>&lt;header&gt;
+  &lt;h1&gt;FlipSide&lt;/h1&gt;
+&lt;/header&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-footer">
+  <h3 class="etiqueta-nombre">&lt;footer&gt;</h3>
+  <p class="descripcion">Es el pie de página: lo que va abajo del todo, como contacto o copyright.</p>
+  <pre class="codigo"><code>&lt;footer&gt;
+  &lt;address&gt;Contacto: bosco@flipside.com&lt;/address&gt;
+&lt;/footer&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-nav">
+  <h3 class="etiqueta-nombre">&lt;nav&gt;</h3>
+  <p class="descripcion">Marca la zona donde están los enlaces de navegación (el menú de la web).</p>
+  <pre class="codigo"><code>&lt;nav&gt;
+  &lt;a href=&quot;Inicio.html&quot;&gt;Inicio&lt;/a&gt;
+  &lt;a href=&quot;Tabla.html&quot;&gt;Tabla&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-section">
+  <h3 class="etiqueta-nombre">&lt;section&gt;</h3>
+  <p class="descripcion">Agrupa un bloque de contenido que trata un tema concreto, como un capítulo dentro de la página.</p>
+  <pre class="codigo"><code>&lt;section class=&quot;Apartado_Tabla&quot;&gt;
+  &lt;p&gt;Contenido de este bloque...&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-div">
+  <h3 class="etiqueta-nombre">&lt;div&gt;</h3>
+  <p class="descripcion">Una caja genérica sin significado especial. Solo agrupa cosas para poder darles estilo con CSS. Es el cajón de sastre del HTML.</p>
+  <pre class="codigo"><code>&lt;div class=&quot;Caja_Titulo&quot;&gt;
+  &lt;h1&gt;Título&lt;/h1&gt;
+&lt;/div&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-address">
+  <h3 class="etiqueta-nombre">&lt;address&gt;</h3>
+  <p class="descripcion">Marca información de contacto (dirección, email, teléfono) de quien hizo la página o la sección.</p>
+  <pre class="codigo"><code>&lt;address&gt;
+  Contacto: bosco@flipside.com
+&lt;/address&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-figure">
+  <h3 class="etiqueta-nombre">&lt;figure&gt;</h3>
+  <p class="descripcion">Agrupa una imagen (o vídeo/gráfico) junto con su pie de foto.</p>
+  <pre class="codigo"><code>&lt;figure class=&quot;Texto_Rodeando&quot;&gt;
+  &lt;img src=&quot;rayquaza.png&quot; alt=&quot;Rayquaza&quot;&gt;
+  &lt;figcaption&gt;Rayquaza salvaje&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-main">
+  <h3 class="etiqueta-nombre">&lt;main&gt;</h3>
+  <p class="descripcion">Marca el contenido principal de la página, el que es único de esa página (sin contar menú o footer, que se repiten en todas).</p>
+  <pre class="codigo"><code>&lt;main&gt;
+  &lt;h1&gt;Inicio&lt;/h1&gt;
+  &lt;p&gt;Contenido único de esta página...&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-article">
+  <h3 class="etiqueta-nombre">&lt;article&gt;</h3>
+  <p class="descripcion">Marca contenido que tiene sentido por sí solo, como si lo pudieras sacar de la página y seguiría funcionando (un post, una noticia).</p>
+  <pre class="codigo"><code>&lt;article&gt;
+  &lt;h2&gt;Devlog #3 de FlipSide&lt;/h2&gt;
+  &lt;p&gt;Esta semana hemos trabajado en...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-aside">
+  <h3 class="etiqueta-nombre">&lt;aside&gt;</h3>
+  <p class="descripcion">Marca contenido relacionado pero secundario, como una barra lateral o una nota al margen.</p>
+  <pre class="codigo"><code>&lt;aside&gt;
+  &lt;p&gt;Dato curioso: Haunter es un Pokémon fantasma/veneno.&lt;/p&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-figcaption">
+  <h3 class="etiqueta-nombre">&lt;figcaption&gt;</h3>
+  <p class="descripcion">Es el pie de foto de un figure: el texto que explica la imagen.</p>
+  <pre class="codigo"><code>&lt;figure&gt;
+  &lt;img src=&quot;haunter.png&quot; alt=&quot;Haunter&quot;&gt;
+  &lt;figcaption&gt;Haunter saliendo de su casa&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-mark">
+  <h3 class="etiqueta-nombre">&lt;mark&gt;</h3>
+  <p class="descripcion">Resalta un trozo de texto como si lo marcaras con un rotulador fluorescente.</p>
+  <pre class="codigo"><code>&lt;p&gt;El examen es el &lt;mark&gt;día 20 de noviembre&lt;/mark&gt;, no lo olvides.&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-time">
+  <h3 class="etiqueta-nombre">&lt;time&gt;</h3>
+  <p class="descripcion">Marca una fecha u hora para que el navegador (y Google) la entiendan como una fecha real, no solo como texto normal.</p>
+  <pre class="codigo"><code>&lt;p&gt;Publicado el &lt;time datetime=&quot;2026-11-13&quot;&gt;13 de noviembre de 2026&lt;/time&gt;&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-details">
+  <h3 class="etiqueta-nombre">&lt;details&gt;</h3>
+  <p class="descripcion">Crea un desplegable: el contenido se queda oculto hasta que el usuario hace click encima.</p>
+  <pre class="codigo"><code>&lt;details&gt;
+  &lt;summary&gt;Ver requisitos del Pokémon&lt;/summary&gt;
+  &lt;p&gt;Nivel mínimo 30, conocer Hipnosis.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-summary">
+  <h3 class="etiqueta-nombre">&lt;summary&gt;</h3>
+  <p class="descripcion">Es el título visible del desplegable (details), en el que hace click el usuario para abrirlo.</p>
+  <pre class="codigo"><code>&lt;details&gt;
+  &lt;summary&gt;Ver más&lt;/summary&gt;
+  &lt;p&gt;Contenido escondido&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="semantica-estructural-dialog">
+  <h3 class="etiqueta-nombre">&lt;dialog&gt;</h3>
+  <p class="descripcion">Crea una ventana tipo popup/modal dentro de la propia página.</p>
+  <pre class="codigo"><code>&lt;dialog open&gt;
+  &lt;p&gt;¿Seguro que quieres salir sin guardar?&lt;/p&gt;
+&lt;/dialog&gt;</code></pre>
+</div>
+ 
+<h2 class="categoria" id="texto-y-encabezados">Texto y encabezados</h2>
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-h1">
+  <h3 class="etiqueta-nombre">&lt;h1&gt;</h3>
+  <p class="descripcion">El título más importante de la página. Normalmente solo debería haber uno por página.</p>
+  <pre class="codigo"><code>&lt;h1&gt;FlipSide&lt;/h1&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-h2">
+  <h3 class="etiqueta-nombre">&lt;h2&gt;</h3>
+  <p class="descripcion">Subtítulo, un nivel por debajo del h1. Sirve para dividir secciones grandes.</p>
+  <pre class="codigo"><code>&lt;h2&gt;Mecánicas de combate&lt;/h2&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-h3">
+  <h3 class="etiqueta-nombre">&lt;h3&gt;</h3>
+  <p class="descripcion">Subtítulo dentro de un h2, para dividir aún más dentro de esa sección.</p>
+  <pre class="codigo"><code>&lt;h3&gt;Sistema de parry&lt;/h3&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-h4">
+  <h3 class="etiqueta-nombre">&lt;h4&gt;</h3>
+  <p class="descripcion">Subtítulo dentro de un h3, para un nivel de detalle todavía más pequeño.</p>
+  <pre class="codigo"><code>&lt;h4&gt;META GENERAL DE LA SÉPTIMA GENERACIÓN&lt;/h4&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-p">
+  <h3 class="etiqueta-nombre">&lt;p&gt;</h3>
+  <p class="descripcion">Un párrafo de texto normal.</p>
+  <pre class="codigo"><code>&lt;p&gt;Este Pokédex recoge los Pokémon de la séptima generación.&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-br">
+  <h3 class="etiqueta-nombre">&lt;br&gt;</h3>
+  <p class="descripcion">Salto de línea dentro del mismo párrafo, sin crear un párrafo nuevo.</p>
+  <pre class="codigo"><code>&lt;p&gt;Primera línea&lt;br&gt;Segunda línea del mismo párrafo&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-hr">
+  <h3 class="etiqueta-nombre">&lt;hr&gt;</h3>
+  <p class="descripcion">Una línea horizontal que separa visualmente dos bloques de contenido.</p>
+  <pre class="codigo"><code>&lt;p&gt;Sección 1&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Sección 2&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-b">
+  <h3 class="etiqueta-nombre">&lt;b&gt;</h3>
+  <p class="descripcion">Pone el texto en negrita, solo a nivel visual (no dice que sea importante de verdad).</p>
+  <pre class="codigo"><code>&lt;p&gt;El Pokémon &lt;b&gt;Dragón&lt;/b&gt; es de tipo dragón/volador.&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-i">
+  <h3 class="etiqueta-nombre">&lt;i&gt;</h3>
+  <p class="descripcion">Pone el texto en cursiva, solo a nivel visual (sin marcar énfasis real).</p>
+  <pre class="codigo"><code>&lt;p&gt;Su nombre científico es &lt;i&gt;Rayquaza salvaje&lt;/i&gt;.&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-u">
+  <h3 class="etiqueta-nombre">&lt;u&gt;</h3>
+  <p class="descripcion">Subraya el texto. Ojo: en la web el subrayado se asocia a los enlaces, así que lo usas con cuidado para no confundir al usuario.</p>
+  <pre class="codigo"><code>&lt;p&gt;&lt;u&gt;Los 6 Pokémon favoritos de esta generación&lt;/u&gt;&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-sup">
+  <h3 class="etiqueta-nombre">&lt;sup&gt;</h3>
+  <p class="descripcion">Pone el texto en superíndice, como en una potencia o un ordinal.</p>
+  <pre class="codigo"><code>&lt;p&gt;Resultado: 10&lt;sup&gt;2&lt;/sup&gt; = 100&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-sub">
+  <h3 class="etiqueta-nombre">&lt;sub&gt;</h3>
+  <p class="descripcion">Pone el texto en subíndice, como en una fórmula química.</p>
+  <pre class="codigo"><code>&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-blockquote">
+  <h3 class="etiqueta-nombre">&lt;blockquote&gt;</h3>
+  <p class="descripcion">Marca una cita larga sacada de otra fuente.</p>
+  <pre class="codigo"><code>&lt;blockquote&gt;&quot;Atrapar Pokémon es solo el principio.&quot;&lt;/blockquote&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-strong">
+  <h3 class="etiqueta-nombre">&lt;strong&gt;</h3>
+  <p class="descripcion">Como b pero con significado real: dice que ese texto es importante de verdad (un lector de pantalla lo anuncia distinto).</p>
+  <pre class="codigo"><code>&lt;p&gt;&lt;strong&gt;Atención:&lt;/strong&gt; guarda la partida antes de cerrar.&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-em">
+  <h3 class="etiqueta-nombre">&lt;em&gt;</h3>
+  <p class="descripcion">Como i pero con significado real: marca énfasis, como si cambiaras el tono al hablar.</p>
+  <pre class="codigo"><code>&lt;p&gt;Esto &lt;em&gt;sí&lt;/em&gt; que es importante.&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-small">
+  <h3 class="etiqueta-nombre">&lt;small&gt;</h3>
+  <p class="descripcion">Texto en letra pequeña, normalmente para avisos legales o notas al margen.</p>
+  <pre class="codigo"><code>&lt;p&gt;Precio final &lt;small&gt;(impuestos no incluidos)&lt;/small&gt;&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-code">
+  <h3 class="etiqueta-nombre">&lt;code&gt;</h3>
+  <p class="descripcion">Marca un trozo de código; el navegador lo pone en fuente monoespaciada (como de máquina de escribir).</p>
+  <pre class="codigo"><code>&lt;p&gt;Usa la función &lt;code&gt;GetComponent()&lt;/code&gt; en Unity.&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-pre">
+  <h3 class="etiqueta-nombre">&lt;pre&gt;</h3>
+  <p class="descripcion">Mantiene el texto exactamente como lo escribiste, con espacios y saltos de línea, sin que el navegador lo aplaste. Se usa mucho con code.</p>
+  <pre class="codigo"><code>&lt;pre&gt;&lt;code&gt;function suma(a, b) {
+  return a + b;
+}&lt;/code&gt;&lt;/pre&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-kbd">
+  <h3 class="etiqueta-nombre">&lt;kbd&gt;</h3>
+  <p class="descripcion">Marca una tecla o combinación de teclas que el usuario tiene que pulsar.</p>
+  <pre class="codigo"><code>&lt;p&gt;Guarda con &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-var">
+  <h3 class="etiqueta-nombre">&lt;var&gt;</h3>
+  <p class="descripcion">Marca una variable, por ejemplo en una fórmula matemática o un ejemplo de código.</p>
+  <pre class="codigo"><code>&lt;p&gt;El área de un círculo es π·&lt;var&gt;r&lt;/var&gt;²&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-cite">
+  <h3 class="etiqueta-nombre">&lt;cite&gt;</h3>
+  <p class="descripcion">Marca el título de una obra que estás citando (libro, película, artículo).</p>
+  <pre class="codigo"><code>&lt;p&gt;Me encanta &lt;cite&gt;Hollow Knight&lt;/cite&gt; como referencia de FlipSide.&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-q">
+  <h3 class="etiqueta-nombre">&lt;q&gt;</h3>
+  <p class="descripcion">Cita corta dentro de una frase; el navegador le pone comillas automáticamente.</p>
+  <pre class="codigo"><code>&lt;p&gt;Como dice el profe: &lt;q&gt;primero entiende, luego programa&lt;/q&gt;.&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-abbr">
+  <h3 class="etiqueta-nombre">&lt;abbr&gt;</h3>
+  <p class="descripcion">Marca una abreviatura o sigla, y le puedes poner el significado completo que aparece al pasar el ratón por encima.</p>
+  <pre class="codigo"><code>&lt;p&gt;&lt;abbr title=&quot;Desarrollo de Aplicaciones Multiplataforma&quot;&gt;DAM&lt;/abbr&gt;&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-span">
+  <h3 class="etiqueta-nombre">&lt;span&gt;</h3>
+  <p class="descripcion">Es como el div pero para texto en línea: una caja genérica sin significado, solo para darle estilo a un trozo de texto.</p>
+  <pre class="codigo"><code>&lt;p&gt;Este Pokémon es &lt;span class=&quot;Apartado_Tabla&quot;&gt;muy raro&lt;/span&gt; de encontrar.&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-ins">
+  <h3 class="etiqueta-nombre">&lt;ins&gt;</h3>
+  <p class="descripcion">Marca texto insertado respecto a una versión anterior; el navegador lo subraya.</p>
+  <pre class="codigo"><code>&lt;p&gt;Precio: &lt;del&gt;20€&lt;/del&gt; &lt;ins&gt;15€&lt;/ins&gt;&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-del">
+  <h3 class="etiqueta-nombre">&lt;del&gt;</h3>
+  <p class="descripcion">Marca texto borrado respecto a una versión anterior; el navegador lo tacha.</p>
+  <pre class="codigo"><code>&lt;p&gt;Precio: &lt;del&gt;20€&lt;/del&gt; &lt;ins&gt;15€&lt;/ins&gt;&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-wbr">
+  <h3 class="etiqueta-nombre">&lt;wbr&gt;</h3>
+  <p class="descripcion">Le dice al navegador «aquí puedes partir la línea si hace falta»; útil en palabras o URLs muy largas.</p>
+  <pre class="codigo"><code>&lt;p&gt;https://flipside&lt;wbr&gt;game&lt;wbr&gt;.com/pagina-muy-larga&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-bdi">
+  <h3 class="etiqueta-nombre">&lt;bdi&gt;</h3>
+  <p class="descripcion">Aísla un texto para que no se mezcle la dirección de lectura cuando combinas idiomas que se leen al revés con español.</p>
+  <pre class="codigo"><code>&lt;p&gt;Usuario: &lt;bdi&gt;اسم المستخدم&lt;/bdi&gt; ha entrado&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-bdo">
+  <h3 class="etiqueta-nombre">&lt;bdo&gt;</h3>
+  <p class="descripcion">Fuerza la dirección de lectura del texto (izquierda-derecha o al revés), sin importar el idioma.</p>
+  <pre class="codigo"><code>&lt;p&gt;&lt;bdo dir=&quot;rtl&quot;&gt;Este texto se lee al revés&lt;/bdo&gt;&lt;/p&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="texto-y-encabezados-data">
+  <h3 class="etiqueta-nombre">&lt;data&gt;</h3>
+  <p class="descripcion">Guarda un valor &#x27;para máquinas&#x27; (un código) junto al texto que lee la persona, para que un script lo pueda usar.</p>
+  <pre class="codigo"><code>&lt;p&gt;&lt;data value=&quot;025&quot;&gt;Pikachu&lt;/data&gt;&lt;/p&gt;</code></pre>
+</div>
+ 
+<h2 class="categoria" id="listas">Listas</h2>
+ 
+<div class="etiqueta-bloque" id="listas-ul">
+  <h3 class="etiqueta-nombre">&lt;ul&gt;</h3>
+  <p class="descripcion">Lista sin orden: cada elemento lleva un punto (•) delante.</p>
+  <pre class="codigo"><code>&lt;ul&gt;
+  &lt;li&gt;Pikachu&lt;/li&gt;
+  &lt;li&gt;Haunter&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="listas-ol">
+  <h3 class="etiqueta-nombre">&lt;ol&gt;</h3>
+  <p class="descripcion">Lista ordenada: cada elemento lleva un número delante.</p>
+  <pre class="codigo"><code>&lt;ol&gt;
+  &lt;li&gt;Elige starter&lt;/li&gt;
+  &lt;li&gt;Sal del pueblo&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="listas-li">
+  <h3 class="etiqueta-nombre">&lt;li&gt;</h3>
+  <p class="descripcion">Cada elemento de una lista; va dentro de un ul o de un ol.</p>
+  <pre class="codigo"><code>&lt;ul&gt;
+  &lt;li&gt;Pikachu&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="listas-dl">
+  <h3 class="etiqueta-nombre">&lt;dl&gt;</h3>
+  <p class="descripcion">Lista de definiciones: pares de término + su descripción.</p>
+  <pre class="codigo"><code>&lt;dl&gt;
+  &lt;dt&gt;IV&lt;/dt&gt;
+  &lt;dd&gt;Valor individual de un Pokémon&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="listas-dt">
+  <h3 class="etiqueta-nombre">&lt;dt&gt;</h3>
+  <p class="descripcion">El término que se está definiendo dentro de una dl.</p>
+  <pre class="codigo"><code>&lt;dl&gt;
+  &lt;dt&gt;EV&lt;/dt&gt;
+  &lt;dd&gt;Puntos de esfuerzo&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="listas-dd">
+  <h3 class="etiqueta-nombre">&lt;dd&gt;</h3>
+  <p class="descripcion">La descripción de ese término dentro de una dl.</p>
+  <pre class="codigo"><code>&lt;dl&gt;
+  &lt;dt&gt;EV&lt;/dt&gt;
+  &lt;dd&gt;Puntos de esfuerzo que se entrenan luchando&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+</div>
+ 
+<h2 class="categoria" id="tablas">Tablas</h2>
+ 
+<div class="etiqueta-bloque" id="tablas-table">
+  <h3 class="etiqueta-nombre">&lt;table&gt;</h3>
+  <p class="descripcion">Crea una tabla.</p>
+  <pre class="codigo"><code>&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Pokémon&lt;/th&gt;&lt;th&gt;Tipo&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Pikachu&lt;/td&gt;&lt;td&gt;Eléctrico&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="tablas-tr">
+  <h3 class="etiqueta-nombre">&lt;tr&gt;</h3>
+  <p class="descripcion">Una fila de la tabla.</p>
+  <pre class="codigo"><code>&lt;tr class=&quot;Apartado_Tabla&quot;&gt;
+  &lt;td&gt;Pikachu&lt;/td&gt;
+  &lt;td&gt;Eléctrico&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="tablas-td">
+  <h3 class="etiqueta-nombre">&lt;td&gt;</h3>
+  <p class="descripcion">Una celda normal de la tabla, dentro de una fila.</p>
+  <pre class="codigo"><code>&lt;tr&gt;
+  &lt;td&gt;Pikachu&lt;/td&gt;
+&lt;/tr&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="tablas-th">
+  <h3 class="etiqueta-nombre">&lt;th&gt;</h3>
+  <p class="descripcion">Una celda de cabecera (el título de una columna o fila); el navegador la pone en negrita y centrada por defecto.</p>
+  <pre class="codigo"><code>&lt;tr&gt;
+  &lt;th&gt;Pokémon&lt;/th&gt;
+  &lt;th&gt;Tipo&lt;/th&gt;
+&lt;/tr&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="tablas-thead">
+  <h3 class="etiqueta-nombre">&lt;thead&gt;</h3>
+  <p class="descripcion">Agrupa las filas que forman la cabecera de la tabla.</p>
+  <pre class="codigo"><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Pokémon&lt;/th&gt;&lt;th&gt;Tipo&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+&lt;/table&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="tablas-tbody">
+  <h3 class="etiqueta-nombre">&lt;tbody&gt;</h3>
+  <p class="descripcion">Agrupa las filas que son el contenido principal de la tabla.</p>
+  <pre class="codigo"><code>&lt;tbody&gt;
+  &lt;tr&gt;&lt;td&gt;Pikachu&lt;/td&gt;&lt;td&gt;Eléctrico&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="tablas-tfoot">
+  <h3 class="etiqueta-nombre">&lt;tfoot&gt;</h3>
+  <p class="descripcion">Agrupa las filas que son el pie de la tabla (totales, resúmenes...).</p>
+  <pre class="codigo"><code>&lt;tfoot&gt;
+  &lt;tr&gt;&lt;td colspan=&quot;2&quot;&gt;Total: 151 Pokémon&lt;/td&gt;&lt;/tr&gt;
+&lt;/tfoot&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="tablas-caption">
+  <h3 class="etiqueta-nombre">&lt;caption&gt;</h3>
+  <p class="descripcion">El título de la tabla entera; se pone justo después de table.</p>
+  <pre class="codigo"><code>&lt;table&gt;
+  &lt;caption&gt;Pokédex Generación 1&lt;/caption&gt;
+  &lt;tr&gt;&lt;td&gt;Pikachu&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="tablas-colgroup">
+  <h3 class="etiqueta-nombre">&lt;colgroup&gt;</h3>
+  <p class="descripcion">Agrupa columnas para poder darles estilo juntas, sin tocar cada celda.</p>
+  <pre class="codigo"><code>&lt;table&gt;
+  &lt;colgroup&gt;
+    &lt;col style=&quot;background-color:lightgray&quot;&gt;
+  &lt;/colgroup&gt;
+  &lt;tr&gt;&lt;td&gt;Pikachu&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="tablas-col">
+  <h3 class="etiqueta-nombre">&lt;col&gt;</h3>
+  <p class="descripcion">Representa una columna dentro de un colgroup.</p>
+  <pre class="codigo"><code>&lt;colgroup&gt;
+  &lt;col span=&quot;2&quot; style=&quot;background-color:#222&quot;&gt;
+&lt;/colgroup&gt;</code></pre>
+</div>
+ 
+<h2 class="categoria" id="enlaces-e-imagenes">Enlaces e imágenes</h2>
+ 
+<div class="etiqueta-bloque" id="enlaces-e-imagenes-a">
+  <h3 class="etiqueta-nombre">&lt;a&gt;</h3>
+  <p class="descripcion">Crea un enlace a otra página, a otra parte de la misma página, o para abrir un email.</p>
+  <pre class="codigo"><code>&lt;a href=&quot;Tabla.html&quot;&gt;Ver tabla&lt;/a&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="enlaces-e-imagenes-img">
+  <h3 class="etiqueta-nombre">&lt;img&gt;</h3>
+  <p class="descripcion">Inserta una imagen.</p>
+  <pre class="codigo"><code>&lt;img src=&quot;pikachu.png&quot; alt=&quot;Pikachu&quot;&gt;</code></pre>
+</div>
+ 
+<h2 class="categoria" id="multimedia">Multimedia</h2>
+ 
+<div class="etiqueta-bloque" id="multimedia-audio">
+  <h3 class="etiqueta-nombre">&lt;audio&gt;</h3>
+  <p class="descripcion">Inserta un reproductor de audio.</p>
+  <pre class="codigo"><code>&lt;audio controls&gt;
+  &lt;source src=&quot;musica.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+&lt;/audio&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="multimedia-video">
+  <h3 class="etiqueta-nombre">&lt;video&gt;</h3>
+  <p class="descripcion">Inserta un reproductor de vídeo.</p>
+  <pre class="codigo"><code>&lt;video controls width=&quot;400&quot;&gt;
+  &lt;source src=&quot;gameplay.mp4&quot; type=&quot;video/mp4&quot;&gt;
+&lt;/video&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="multimedia-source">
+  <h3 class="etiqueta-nombre">&lt;source&gt;</h3>
+  <p class="descripcion">Le da al navegador varias opciones de archivo (distintos formatos) para un audio, vídeo o picture, y el navegador elige el que puede reproducir.</p>
+  <pre class="codigo"><code>&lt;video controls&gt;
+  &lt;source src=&quot;video.webm&quot; type=&quot;video/webm&quot;&gt;
+  &lt;source src=&quot;video.mp4&quot; type=&quot;video/mp4&quot;&gt;
+&lt;/video&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="multimedia-picture">
+  <h3 class="etiqueta-nombre">&lt;picture&gt;</h3>
+  <p class="descripcion">Permite dar varias versiones de una imagen (distinto tamaño, por ejemplo) para que el navegador elija la mejor según la pantalla.</p>
+  <pre class="codigo"><code>&lt;picture&gt;
+  &lt;source srcset=&quot;logo-grande.png&quot; media=&quot;(min-width:600px)&quot;&gt;
+  &lt;img src=&quot;logo-pequeno.png&quot; alt=&quot;Logo&quot;&gt;
+&lt;/picture&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="multimedia-track">
+  <h3 class="etiqueta-nombre">&lt;track&gt;</h3>
+  <p class="descripcion">Añade subtítulos o pistas de texto a un vídeo o audio.</p>
+  <pre class="codigo"><code>&lt;video controls&gt;
+  &lt;source src=&quot;video.mp4&quot; type=&quot;video/mp4&quot;&gt;
+  &lt;track src=&quot;subs.vtt&quot; kind=&quot;subtitles&quot; srclang=&quot;es&quot;&gt;
+&lt;/video&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="multimedia-canvas">
+  <h3 class="etiqueta-nombre">&lt;canvas&gt;</h3>
+  <p class="descripcion">Crea un lienzo en blanco donde puedes dibujar gráficos con JavaScript. Se usa mucho en juegos y gráficas.</p>
+  <pre class="codigo"><code>&lt;canvas id=&quot;miLienzo&quot; width=&quot;300&quot; height=&quot;150&quot;&gt;&lt;/canvas&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="multimedia-svg">
+  <h3 class="etiqueta-nombre">&lt;svg&gt;</h3>
+  <p class="descripcion">Inserta un gráfico vectorial (dibujado con código, no una foto); se puede escalar sin perder calidad.</p>
+  <pre class="codigo"><code>&lt;svg width=&quot;100&quot; height=&quot;100&quot;&gt;
+  &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;40&quot; fill=&quot;green&quot; /&gt;
+&lt;/svg&gt;</code></pre>
+</div>
+ 
+<h2 class="categoria" id="formularios">Formularios</h2>
+ 
+<div class="etiqueta-bloque" id="formularios-form">
+  <h3 class="etiqueta-nombre">&lt;form&gt;</h3>
+  <p class="descripcion">La caja que agrupa todos los campos de un formulario y define a dónde se envían los datos.</p>
+  <pre class="codigo"><code>&lt;form action=&quot;/enviar&quot; method=&quot;post&quot;&gt;
+  ...
+&lt;/form&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-input">
+  <h3 class="etiqueta-nombre">&lt;input&gt;</h3>
+  <p class="descripcion">El campo donde el usuario escribe o elige algo. Cambia mucho según su atributo type (texto, email, radio, checkbox...).</p>
+  <pre class="codigo"><code>&lt;input type=&quot;text&quot; name=&quot;nombre&quot;&gt;
+&lt;input type=&quot;radio&quot; name=&quot;genero&quot; id=&quot;Hombre&quot;&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-select">
+  <h3 class="etiqueta-nombre">&lt;select&gt;</h3>
+  <p class="descripcion">Crea un desplegable para elegir una opción obligatoriamente entre las que hay.</p>
+  <pre class="codigo"><code>&lt;select name=&quot;generacion&quot;&gt;
+  &lt;option value=&quot;7&quot;&gt;Gen 7&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-option">
+  <h3 class="etiqueta-nombre">&lt;option&gt;</h3>
+  <p class="descripcion">Cada opción dentro de un select.</p>
+  <pre class="codigo"><code>&lt;select&gt;
+  &lt;option value=&quot;pikachu&quot;&gt;Pikachu&lt;/option&gt;
+  &lt;option value=&quot;haunter&quot;&gt;Haunter&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-textarea">
+  <h3 class="etiqueta-nombre">&lt;textarea&gt;</h3>
+  <p class="descripcion">Caja de texto de varias líneas, para escribir párrafos largos.</p>
+  <pre class="codigo"><code>&lt;textarea name=&quot;comentario&quot; rows=&quot;4&quot; cols=&quot;30&quot;&gt;&lt;/textarea&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-button">
+  <h3 class="etiqueta-nombre">&lt;button&gt;</h3>
+  <p class="descripcion">Un botón al que le puedes programar el comportamiento con JavaScript (a diferencia de input type=submit, que solo envía el formulario).</p>
+  <pre class="codigo"><code>&lt;button type=&quot;button&quot; onclick=&quot;corregir()&quot;&gt;Corregir test&lt;/button&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-label">
+  <h3 class="etiqueta-nombre">&lt;label&gt;</h3>
+  <p class="descripcion">Pone una etiqueta de texto asociada a un campo del formulario. Si haces click en el label, también se activa el campo.</p>
+  <pre class="codigo"><code>&lt;label for=&quot;Hombre&quot;&gt;Hombre&lt;/label&gt;
+&lt;input type=&quot;radio&quot; id=&quot;Hombre&quot; name=&quot;genero&quot;&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-fieldset">
+  <h3 class="etiqueta-nombre">&lt;fieldset&gt;</h3>
+  <p class="descripcion">Agrupa varios campos relacionados dentro de un formulario, dibujando un marco alrededor.</p>
+  <pre class="codigo"><code>&lt;fieldset&gt;
+  &lt;legend&gt;Datos personales&lt;/legend&gt;
+  &lt;input type=&quot;text&quot; name=&quot;nombre&quot;&gt;
+&lt;/fieldset&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-legend">
+  <h3 class="etiqueta-nombre">&lt;legend&gt;</h3>
+  <p class="descripcion">El título de ese grupo de campos; va dentro del fieldset.</p>
+  <pre class="codigo"><code>&lt;fieldset&gt;
+  &lt;legend&gt;Género&lt;/legend&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;genero&quot;&gt;
+&lt;/fieldset&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-datalist">
+  <h3 class="etiqueta-nombre">&lt;datalist&gt;</h3>
+  <p class="descripcion">Da una lista de sugerencias para un input, pero el usuario puede escribir algo distinto si quiere (a diferencia del select, que obliga a elegir).</p>
+  <pre class="codigo"><code>&lt;input list=&quot;pokemons&quot;&gt;
+&lt;datalist id=&quot;pokemons&quot;&gt;
+  &lt;option value=&quot;Pikachu&quot;&gt;
+&lt;/datalist&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-output">
+  <h3 class="etiqueta-nombre">&lt;output&gt;</h3>
+  <p class="descripcion">Muestra el resultado de un cálculo hecho con JavaScript dentro del formulario.</p>
+  <pre class="codigo"><code>&lt;output name=&quot;resultado&quot;&gt;42&lt;/output&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-progress">
+  <h3 class="etiqueta-nombre">&lt;progress&gt;</h3>
+  <p class="descripcion">Barra de progreso: muestra cuánto se ha completado una tarea.</p>
+  <pre class="codigo"><code>&lt;progress value=&quot;70&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-meter">
+  <h3 class="etiqueta-nombre">&lt;meter&gt;</h3>
+  <p class="descripcion">Muestra una medida dentro de un rango conocido, como el nivel de batería o una puntuación.</p>
+  <pre class="codigo"><code>&lt;meter value=&quot;8&quot; min=&quot;0&quot; max=&quot;10&quot;&gt;&lt;/meter&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="formularios-optgroup">
+  <h3 class="etiqueta-nombre">&lt;optgroup&gt;</h3>
+  <p class="descripcion">Agrupa varias option dentro de un select bajo un mismo subtítulo.</p>
+  <pre class="codigo"><code>&lt;select&gt;
+  &lt;optgroup label=&quot;Eléctricos&quot;&gt;
+    &lt;option&gt;Pikachu&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;</code></pre>
+</div>
+ 
+<h2 class="categoria" id="incrustacion-y-scripting">Incrustación y scripting</h2>
+ 
+<div class="etiqueta-bloque" id="incrustacion-y-scripting-iframe">
+  <h3 class="etiqueta-nombre">&lt;iframe&gt;</h3>
+  <p class="descripcion">Mete una página web completa de otra dirección dentro de la tuya, como una ventanita. Se usa mucho para incrustar un vídeo de YouTube.</p>
+  <pre class="codigo"><code>&lt;iframe src=&quot;https://www.youtube.com/embed/xxxx&quot; width=&quot;400&quot; height=&quot;250&quot;&gt;&lt;/iframe&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="incrustacion-y-scripting-embed">
+  <h3 class="etiqueta-nombre">&lt;embed&gt;</h3>
+  <p class="descripcion">Incrusta contenido externo (como un PDF) generado por un plugin del navegador.</p>
+  <pre class="codigo"><code>&lt;embed src=&quot;manual.pdf&quot; type=&quot;application/pdf&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="incrustacion-y-scripting-object">
+  <h3 class="etiqueta-nombre">&lt;object&gt;</h3>
+  <p class="descripcion">Parecido a embed: incrusta un recurso externo, pero de forma más genérica y con más opciones de compatibilidad.</p>
+  <pre class="codigo"><code>&lt;object data=&quot;manual.pdf&quot; type=&quot;application/pdf&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;&lt;/object&gt;</code></pre>Es la caja que envuelve toda la página. Todo lo que escribes en HTML (menos el DOCTYPE) va dentro de esta etiqueta.
+  
+  
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="incrustacion-y-scripting-noscript">
+  <h3 class="etiqueta-nombre">&lt;noscript&gt;</h3>
+  <p class="descripcion">Muestra contenido alternativo solo si el navegador del usuario tiene JavaScript desactivado.</p>
+  <pre class="codigo"><code>&lt;noscript&gt;Activa JavaScript para ver esta página correctamente.&lt;/noscript&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="incrustacion-y-scripting-script">
+  <h3 class="etiqueta-nombre">&lt;script&gt;</h3>
+  <p class="descripcion">Mete código JavaScript en la página (o enlaza un .js externo), para darle comportamiento e interactividad.</p>
+  <pre class="codigo"><code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></pre>
+</div>
+ 
+ 
+<div class="etiqueta-bloque" id="incrustacion-y-scripting-template">
+  <h3 class="etiqueta-nombre">&lt;template&gt;</h3>
+  <p class="descripcion">Guarda un trozo de HTML que no se muestra directamente, pero que JavaScript puede copiar y usar más tarde. Útil para contenido repetido dinámicamente.</p>
+  <pre class="codigo"><code>&lt;template id=&quot;fila-pokemon&quot;&gt;
+  &lt;tr&gt;&lt;td class=&quot;nombre&quot;&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/template&gt;</code></pre>
+</div>
+ 
+</main>
+ 
+</body>
+</html>
